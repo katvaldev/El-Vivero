@@ -12,6 +12,7 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+/* Kat */
 .logo{
   background-color: transparent;
   height: 50px;
@@ -73,6 +74,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  font-family: 'Quicksand', sans-serif;
 }
 .footer {
   position: absolute;
