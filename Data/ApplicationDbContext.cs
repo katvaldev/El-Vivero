@@ -12,6 +12,8 @@ namespace Vivero.Data
             : base(options)
         {
         }
+        public DbSet<Vivero.Models.Contacto> Contacto {get; set;}
+
         // public DbSet<Vivero.Models.Carrito> Carrito { get; set; }
 
         // public DbSet<Vivero.Models.Plaga> Plaga { get; set; }
