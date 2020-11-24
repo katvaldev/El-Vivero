@@ -5,6 +5,12 @@ for details on configuring this project to bundle and minify static web assets. 
   box-sizing: border-box;
 }
 
+/* animadera */
+@keyframes logo{
+  to {
+    transform: scale(1.2);
+  }
+}
 
 a.navbar-brand {
   white-space: normal;
@@ -12,6 +18,29 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+/* Kat */
+.navbar-nav i:hover{
+  transition: all 0.2s ease;
+  font-size: 2rem;
+  color: #39A805;
+}
+
+.navbar a:hover{
+  border-bottom:3px solid #39A805;
+}
+
+.logo {
+  background-color: transparent;
+  flex-shrink: 0;
+  height: 103px;
+  pointer-events: auto;
+  width: 98px;
+}
+
+.logo:hover{
+  animation-name: logo;
+  animation-duration: 1s;
+}
 
 /* David */
 .plaga{
@@ -87,13 +116,6 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-.logo {
-  background-color: transparent;
-  flex-shrink: 0;
-  height: 103px;
-  pointer-events: auto;
-  transition: all 0.2s ease;
-  width: 98px;
-}
+
 
 
