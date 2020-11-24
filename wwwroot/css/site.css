@@ -42,6 +42,42 @@ a.navbar-brand {
   animation-duration: 1s;
 }
 
+.titulo{
+  border-bottom:3px solid #39A805;
+}
+
+.btn-plantary {
+  color: #fff;
+  background-color: #39A805;
+  border-color: #39A805;
+}
+
+.btn-plantary:hover {
+  color: #fff;
+  background-color: #2d8a02;
+  border-color: #1c5701;
+}
+
+.btn-plantary:focus, .btn-plantary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.9);
+}
+/* para dropdown */
+.btn-plantary-light {
+  color: rgb(60, 61, 60);
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.btn-plantary-light:hover {
+  color: rgb(60, 61, 60);
+  background-color: #ebebeb;
+  border-color: #c5c4c4;
+}
+
+.btn-plantary-light:focus, .btn-plantary-light.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.9);
+}
+
 /* David */
 .plaga{
   float:left;
