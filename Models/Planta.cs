@@ -8,7 +8,7 @@ namespace Vivero.Models
 
         public string imagePlanta { get; set; }
 
-        public Decimal precio { get; set; }
+        public int precio { get; set; }
 
 
 
