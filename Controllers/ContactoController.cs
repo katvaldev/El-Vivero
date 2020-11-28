@@ -85,7 +85,7 @@ namespace Vivero.Controllers
         }
         
 
-        // GET: http://localhost:5000/Contacto/Delete/6 MUESTRA Contacto
+   
         public IActionResult Delete(int? id)
         {
             var contacto = _context.Contacto.Find(id);
