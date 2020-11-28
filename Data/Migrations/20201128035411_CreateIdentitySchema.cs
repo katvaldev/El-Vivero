@@ -48,6 +48,24 @@ namespace Vivero.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Contacto",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nombre = table.Column<string>(nullable: false),
+                    Apellido = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Telefono = table.Column<string>(nullable: false),
+                    Asunto = table.Column<string>(nullable: true),
+                    Mensaje = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contacto", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -207,6 +225,9 @@ namespace Vivero.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Contacto");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

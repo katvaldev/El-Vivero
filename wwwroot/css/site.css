@@ -5,6 +5,12 @@ for details on configuring this project to bundle and minify static web assets. 
   box-sizing: border-box;
 }
 
+/* animadera */
+@keyframes logo{
+  to {
+    transform: scale(1.2);
+  }
+}
 
 a.navbar-brand {
   white-space: normal;
@@ -13,11 +19,31 @@ a.navbar-brand {
 }
 
 /* Kat */
-.logo{
+.navbar-nav i:hover{
+  transition: all 0.2s ease;
+  font-size: 2rem;
+  color: #39A805;
+}
+
+.navbar a:hover{
+  border-bottom:3px solid #39A805;
+}
+
+.logo {
   background-color: transparent;
-  height: 50px;
+  flex-shrink: 0;
+  height: 103px;
   pointer-events: auto;
   width: 98px;
+}
+
+.logo:hover{
+  animation-name: logo;
+  animation-duration: 1s;
+}
+
+.titulo{
+  border-bottom:3px solid #39A805;
 }
 
 /* David */
@@ -31,19 +57,27 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: #39A805;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #39A805;
+  border-color: #39A805;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #246d02;
+  border-color: #1c5701;
+}
+.btn-primary:focus, .btn-plantary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.9);
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #39A805;
+  border-color: #39A805;
 }
 
 /* Sticky footer styles
@@ -73,6 +107,7 @@ button.accept-policy {
   line-height: inherit;
 }
 
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -93,13 +128,6 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-.logo {
-  background-color: transparent;
-  flex-shrink: 0;
-  height: 103px;
-  pointer-events: auto;
-  transition: all 0.2s ease;
-  width: 98px;
-}
+
 
 
