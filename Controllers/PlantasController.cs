@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using @model Vivero.Models;
 
 namespace Vivero.Controllers
 {
@@ -9,7 +10,16 @@ namespace Vivero.Controllers
         }
 
 
-        
+        [HttpPost]
+        public IActionResult Cargar(Planta objPlanta){
+            if (ModelState.IsValid)
+            {
+                _context.Add(objPlanta);
+                _context.SaveChanges();
+                objPlanta.Response = "Producto cargado a la tienda";
+            }
+            return View(objPlanta);
+        }
 
 
 

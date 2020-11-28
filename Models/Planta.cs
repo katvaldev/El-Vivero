@@ -10,6 +10,8 @@ namespace Vivero.Models
 
         public int precio { get; set; }
 
+        public int stock { get; set; }
+
 
 
 
