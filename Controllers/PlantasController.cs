@@ -1,5 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-using @model Vivero.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Vivero.Data;
+using Vivero.Models;
 
 namespace Vivero.Controllers
 {
@@ -9,14 +18,19 @@ namespace Vivero.Controllers
             return View();
         }
 
+        
+
+        public IActionResult Cargar()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public IActionResult Cargar(Planta objPlanta){
             if (ModelState.IsValid)
             {
-                _context.Add(objPlanta);
-                _context.SaveChanges();
-                objPlanta.Response = "Producto cargado a la tienda";
+                 
             }
             return View(objPlanta);
         }

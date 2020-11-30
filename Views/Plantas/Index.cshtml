@@ -1,4 +1,5 @@
-@model Vivero.Models.Planta
+
+@model IEnumerable<Vivero.Models.Planta>
 @{
     ViewData["Title"] = "Plantas";
 }
@@ -11,6 +12,7 @@
     <a class="dropdown-item" href="#">Plantas de interior</a>
     <a class="dropdown-item" href="#">Plantas de exterior</a>
   </div>
+
 </div>
 
 <div class="row">
@@ -57,7 +59,7 @@
   </div>
 </div>
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
 		
 <link rel="stylesheet" type="text/css" href="../../wwwroot/css/boxlight.css">
@@ -66,94 +68,19 @@
 		<link rel="stylesheet" type="text/css" href="../../wwwroot/css/blocks_styl.css">
 	
 		 
-	</head>
-
-  <body >
-
-<div class="b56-conetnt">
-	
-
-<section class="b56-wrap-b wancho">
-	<h2>Ama lo que haces, Aprende como</h2>
-	<div class="b56-wrap-ctn noslider">
-				<a href=" " class="b56-item-b" data-color="#E8F51E">
-			<div class="b56-img-default">
-				<figure>
-					<img src="../../wwwroot/images/plantaA.jpg" alt="" width="96" height="96">
-				</figure>
-			</div>
-			<div class="b56-img-hover">
-				<figure>
-					<img src="../../wwwroot/images/plantaA.jpg" alt="" width="96" height="96">
-				</figure>
-			</div>
-			<p>PLANTA A</p>
-			<span>PRECIO</span>
-		</a>
-				<a href=" " class="b56-item-b" data-color="#E8F51E">
-			<div class="b56-img-default">
-				<figure>
-					<img src="../../wwwroot/images/plantaB.jpg" alt="" width="130" height="96">
-				</figure>
-			</div>
-			<div class="b56-img-hover">
-				<figure>
-					<img src="../../wwwroot/images/plantaB.jpg" alt="" width="130" height="96">
-				</figure>
-			</div>
-			<p>PLANTA B</p>
-			<span>PRECIO</span>
-		</a>
-
-		
-				<a href="" class="b56-item-b" data-color="#E8F51E">
-			<div class="b56-img-default">
-				<figure>
-					<img src="../../wwwroot/images/plantaC.jpg" alt="" width="96" height="96">
-				</figure>
-			</div>
-			<div class="b56-img-hover">
-				<figure>
-					<img src="../../wwwroot/images/plantaC.jpg" alt="" width="96" height="96">
-				</figure>
-			</div>
-			<p>PLANTA C</p>
-			<span>PRECIO</span>
-		</a>
-				<a href="" class="b56-item-b" data-color="#E8F51E">
-			<div class="b56-img-default">
-				<figure>
-					<img src="../../wwwroot/images/plantaD.jpg" alt="" width="96" height="96">
-				</figure>
-			</div>
-			<div class="b56-img-hover">
-				<figure>
-					<img src="../../wwwroot/images/plantaD.jpg" alt="" width="96" height="96">
-				</figure>
-			</div>
-			<p>PLANTA D</p>
-			<span>PRECIO</span>
-		</a>
-				<a href="" class="b56-item-b" data-color="#E8F51E">
-			<div class="b56-img-default">
-				<figure>
-					<img src="../../wwwroot/images/plantaE.jpg" alt="" width="148" height="96">
-				</figure>
-			</div>
-			<div class="b56-img-hover">
-				<figure>
-					<img src="../../wwwroot/images/plantaE.jpg" alt="" width="148" height="96">
-				</figure>
-			</div>
-			<p>PLANTA E</p>
-			<span>PRECIO</span>
-		</a>
-			</div>
 	
 	
-</section>
+@foreach (var item in Model)
+{
+<div class="card" style="width: 18rem;">
+  <img src="~/images/@item.imagePlanta" class="card-img-top" alt="Nombreplanta">
+  <div class="card-body">
+    <h5 class="card-title">@Html.DisplayNameFor(model => model.Nombreplanta)</h5>
+    <p class="card-text">@Html.DisplayNameFor(model => model.precio)</p>
+    <a href="#" class="btn btn-primary">Comprar</a>
+  </div>
 </div>
-
+} 
 
 
 
@@ -211,7 +138,7 @@
 
 	});
 </script>	
-</body>
+
 
 <script>
 // Get the elements with class="column"
