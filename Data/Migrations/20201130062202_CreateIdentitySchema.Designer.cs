@@ -10,7 +10,7 @@ using Vivero.Data;
 namespace Vivero.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201130034954_CreateIdentitySchema")]
+    [Migration("20201130062202_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -254,7 +254,8 @@ namespace Vivero.Data.Migrations
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnName("Telefono")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(9)")
+                        .HasMaxLength(9);
 
                     b.HasKey("ID");
 

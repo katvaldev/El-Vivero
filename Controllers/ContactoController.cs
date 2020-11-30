@@ -38,10 +38,17 @@ namespace Vivero.Controllers
                 _context.Add(contacto);
                 _context.SaveChanges();
                 contacto.Respuesta="Gracias " + contacto.Nombre + ", lo contactaremos lo más pronto posible.";
-            }         
+                return RedirectToAction("ContactoConfirmacion");
+            }
+
             return View(contacto);
         }
 
+        //confirmacion
+        public IActionResult ContactoConfirmacion(Contacto c)
+        {
+            return View(c.Respuesta);
+        }
         // ObtenerContacto
         public async Task<IActionResult> Edit(int? id)
         {

@@ -252,7 +252,8 @@ namespace Vivero.Data.Migrations
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnName("Telefono")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(9)")
+                        .HasMaxLength(9);
 
                     b.HasKey("ID");
 

@@ -56,7 +56,7 @@ namespace Vivero.Data.Migrations
                     Nombre = table.Column<string>(nullable: false),
                     Apellido = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Telefono = table.Column<string>(nullable: false),
+                    Telefono = table.Column<string>(maxLength: 9, nullable: false),
                     Asunto = table.Column<string>(nullable: true),
                     Mensaje = table.Column<string>(nullable: false)
                 },
