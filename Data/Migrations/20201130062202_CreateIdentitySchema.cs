@@ -56,13 +56,29 @@ namespace Vivero.Data.Migrations
                     Nombre = table.Column<string>(nullable: false),
                     Apellido = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Telefono = table.Column<string>(nullable: false),
+                    Telefono = table.Column<string>(maxLength: 9, nullable: false),
                     Asunto = table.Column<string>(nullable: true),
                     Mensaje = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Contacto", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Planta",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nombre_planta = table.Column<string>(nullable: true),
+                    Imagen_planta = table.Column<string>(nullable: true),
+                    Precio = table.Column<double>(nullable: false),
+                    Stock = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Planta", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -228,6 +244,9 @@ namespace Vivero.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contacto");
+
+            migrationBuilder.DropTable(
+                name: "Planta");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

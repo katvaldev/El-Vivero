@@ -10,7 +10,7 @@ using Vivero.Data;
 namespace Vivero.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201128035411_CreateIdentitySchema")]
+    [Migration("20201130062202_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -254,11 +254,41 @@ namespace Vivero.Data.Migrations
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnName("Telefono")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(9)")
+                        .HasMaxLength(9);
 
                     b.HasKey("ID");
 
                     b.ToTable("Contacto");
+                });
+
+            modelBuilder.Entity("Vivero.Models.Planta", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("imagePlanta")
+                        .HasColumnName("Imagen_planta")
+                        .HasColumnType("text");
+
+                    b.Property<string>("planta")
+                        .HasColumnName("Nombre_planta")
+                        .HasColumnType("text");
+
+                    b.Property<double>("precio")
+                        .HasColumnName("Precio")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("stock")
+                        .HasColumnName("Stock")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Planta");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

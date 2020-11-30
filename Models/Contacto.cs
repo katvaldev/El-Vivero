@@ -27,6 +27,7 @@ namespace Vivero.Models
         public string Email { get; set; }
         
         [Required(ErrorMessage = "Debe ingresar un número de teléfono")]
+        [StringLength(9)]
         [RegularExpression(@"[0-9]{9}", ErrorMessage = "No es un número de teléfono válido")]
         // [DataType(DataType.PhoneNumber)]
         [Display(Name="Teléfono")]
