@@ -22,8 +22,8 @@ namespace Vivero.Controllers
 
         public IActionResult Index()
         {
-            var listContactos=_context.Contacto.ToList();
-            return View();
+            var listContactos=_context.Contacto.Where(x => x.Mensaje != null).ToList();
+            return View(listContactos);
         }
         public IActionResult Create()
         {
