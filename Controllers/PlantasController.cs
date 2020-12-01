@@ -26,11 +26,25 @@ namespace Vivero.Controllers
         }
 
 
+        
+        private readonly ILogger<PlantasController> _logger;
+        private readonly ApplicationDbContext _context;
+
+        public PlantasController(ILogger<PlantasController> logger,
+        ApplicationDbContext context)
+        {
+            _logger = logger;
+            _context = context;
+        }
+
+
         [HttpPost]
         public IActionResult Cargar(Planta objPlanta){
             if (ModelState.IsValid)
             {
-                 
+                 _context.Add(objPlanta);
+                _context.SaveChanges();
+                
             }
             return View(objPlanta);
         }

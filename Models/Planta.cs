@@ -2,29 +2,31 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Vivero.Models
 {
+
+        [Table("Planta")]
     public class Planta
     {
         
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("ID")]
+        [Column("id")]
         public int IDplanta { get; set; }
 
-        [Column("Nombre_planta")]
+        [Column("nombre_planta")]
         public string Nombreplanta { get; set; }
 
 
-        [Column("Imagen_planta")]
+        [Column("imagen_planta")]
         public string imagePlanta { get; set; }
 
 
-        [Column("Precio")]
+        [Column("precio")]
         public int precio { get; set; }
 
 
 
 
-        [Column("Stock")]
+        [Column("stock")]
         public int stock { get; set; }
 
 
