@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Vivero.Models;
 
 namespace Vivero.Data
 {
@@ -21,5 +22,7 @@ namespace Vivero.Data
         // public DbSet<Vivero.Models.Plaga> Plaga { get; set; }
 
         public DbSet<Vivero.Models.Planta> Planta { get; set; }
+
+        public DbSet<Vivero.Models.Tipoplanta> Tipoplanta { get; set; }
     }
 }

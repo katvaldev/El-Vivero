@@ -44,12 +44,12 @@ namespace Vivero.Controllers
             {
                  _context.Add(objPlanta);
                 _context.SaveChanges();
-                
+                objPlanta.Respuesta="Planta agregada.";
             }
             return View(objPlanta);
         }
 
-
+        
 
     }
 }

@@ -37,6 +37,10 @@ namespace Vivero
                 options.UseNpgsql(
                     Configuration.GetConnectionString("postgresql-db")
                 ));
+                
+            services.AddDbContext<ViveroContext>(x => x.UseSqlServer("Server=.;Database=ViveroDB; Integrated Security=true;"));
+
+
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
