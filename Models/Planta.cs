@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using El_Vivero.Models;
+
 namespace Vivero.Models
 {
 
