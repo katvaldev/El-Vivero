@@ -38,7 +38,7 @@ namespace Vivero
                     Configuration.GetConnectionString("postgresql-db")
                 ));
                 
-            services.AddDbContext<ViveroContext>(x => x.UseSqlServer("Server=.;Database=ViveroDB; Integrated Security=true;"));
+          //  services.AddDbContext<ViveroContext>(x => x.UseSqlServer("Server=.;Database=ViveroDB; Integrated Security=true;"));
 
 
 

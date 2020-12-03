@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using El_Vivero.Models;
@@ -27,7 +28,7 @@ namespace Vivero.Models
         [Display(Name="precio")]
         [Required(ErrorMessage = "Por favor, Ingrese el precio de la Planta")]
         [Column("precio")]
-        public int precio { get; set; }
+        public decimal precio { get; set; }
 
 
         [Display(Name="stock")]

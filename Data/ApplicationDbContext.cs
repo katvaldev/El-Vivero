@@ -23,6 +23,8 @@ namespace Vivero.Data
 
         public DbSet<Vivero.Models.Planta> Planta { get; set; }
 
+
+        
         
     }
 }
