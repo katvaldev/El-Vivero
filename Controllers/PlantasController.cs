@@ -49,6 +49,11 @@ namespace Vivero.Controllers
             return View(objPlanta);
         }
 
+
+        public IActionResult Formulario()
+        {
+            return View("Formulario");
+        }
         
 
     }

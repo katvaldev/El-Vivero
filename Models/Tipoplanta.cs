@@ -7,6 +7,9 @@ using Vivero.Models;
 namespace El_Vivero.Models
 
 {
+
+
+    [Table("Tipoplanta")]
     public class Tipoplanta
     {
         public int IDTipoplanta { get; set; }
