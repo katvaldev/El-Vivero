@@ -10,7 +10,7 @@ using Vivero.Data;
 namespace Vivero.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201130062202_CreateIdentitySchema")]
+    [Migration("20201204011332_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -270,6 +270,9 @@ namespace Vivero.Data.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<int>("IdTipo")
+                        .HasColumnType("integer");
+
                     b.Property<string>("imagePlanta")
                         .HasColumnName("Imagen_planta")
                         .HasColumnType("text");
@@ -288,7 +291,26 @@ namespace Vivero.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("IdTipo");
+
                     b.ToTable("Planta");
+                });
+
+            modelBuilder.Entity("Vivero.Models.TipoPlanta", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Nombre")
+                        .HasColumnName("Tipo")
+                        .HasColumnType("text");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("TipoPlanta");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -338,6 +360,15 @@ namespace Vivero.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Vivero.Models.Planta", b =>
+                {
+                    b.HasOne("Vivero.Models.TipoPlanta", "TipoPlanta")
+                        .WithMany("Plantas")
+                        .HasForeignKey("IdTipo")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
