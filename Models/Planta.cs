@@ -1,18 +1,20 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Vivero.Models
 {
-    [Table("Planta")]
     public class Planta
     {
-        
-
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("ID")]
-        public int ID { get; set; }
+        public int IDplanta { get; set; }
+
+        [Display(Name="Nombre")]
 
         [Column("Nombre_planta")]
-        public string planta { get; set; }
+        public string Nombreplanta { get; set; }
+
+        [Display(Name="Imagen")]
 
         [Column("Imagen_planta")]
 
@@ -25,9 +27,13 @@ namespace Vivero.Models
 
         public int stock { get; set; }
 
+        [ForeignKey("IdTipo")]
+         public TipoPlanta TipoPlanta { get; set; }
+         public int IdTipo { get; set; }
+
         [NotMapped]
 
-        public string Response { get; set; }
+        public string Respuesta { get; set; }
 
 
     }

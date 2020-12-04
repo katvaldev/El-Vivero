@@ -30,7 +30,7 @@ namespace Vivero.Controllers
             {
                 _context.Add(objPlanta);
                 _context.SaveChanges();
-                objPlanta.Response = "Producto cargado a la tienda";
+                objPlanta.Respuesta = "Producto cargado a la tienda";
             }
             return View(objPlanta);
         }
