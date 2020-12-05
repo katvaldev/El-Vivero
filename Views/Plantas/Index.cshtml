@@ -1,12 +1,17 @@
-
 @model IEnumerable<Vivero.Models.Planta>
+
 @{
     ViewData["Title"] = "Plantas";
 }
 
+<div class="row">
+  <div class="col-md-4">
+    <h3 class="titulo">Plantas </h3>
+  </div>
+</div>
 
 <div class="dropdown p-3 mb-2 bg-success">
-  <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-leaf"></i>
     Tipo de planta
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -21,10 +26,13 @@
   
 </div>
 
-<div class="row">
-  <div class="col-md-4">
-    <h3 class="titulo">Plantas </h3>
-  </div>
+<a asp-area="" asp-controller="Plantas" asp-action="Formulario">
+  		<button type="button" class="btn btn-outline-light" asp-area="" asp-controller="Plantas" asp-action="Formulario" >
+	 		 Formulario
+	  	</button>
+</a>
+
+
 </div>
 
 <h2>Estas son nuestras plantas</h2>
@@ -134,7 +142,34 @@
 	
 		 
 	
-	
+
+
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+
+
+@foreach (var item in Model)
+{
+
+<div class="card" style="width: 18rem;">
+  <a asp-area="" asp-controller="Plantas" asp-action="Detalle" asp-route-id="@item.IDplanta">
+  <img src="@Html.DisplayFor(modelItem => item.imagePlanta)" class="card-img-top" alt="...">
+  </a>
+  <div class="card-body">
+    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nombreplanta)</h5>
+    <p class="card-text">@Html.DisplayFor(modelItem => item.precio)</p>
+    <a href="#" class="btn btn-primary" asp-controller="Plantas" asp-action="Comprar" asp-route-id="@item.IDplanta">COMPRAR</a>
+  </div>
+</div>
+
 
 
 

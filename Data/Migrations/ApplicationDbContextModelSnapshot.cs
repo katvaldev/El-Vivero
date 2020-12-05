@@ -252,11 +252,63 @@ namespace Vivero.Data.Migrations
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnName("Telefono")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(9)")
+                        .HasMaxLength(9);
 
                     b.HasKey("ID");
 
                     b.ToTable("Contacto");
+                });
+
+            modelBuilder.Entity("Vivero.Models.Planta", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("IdTipo")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("imagePlanta")
+                        .HasColumnName("Imagen_planta")
+                        .HasColumnType("text");
+
+                    b.Property<string>("planta")
+                        .HasColumnName("Nombre_planta")
+                        .HasColumnType("text");
+
+                    b.Property<double>("precio")
+                        .HasColumnName("Precio")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("stock")
+                        .HasColumnName("Stock")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("IdTipo");
+
+                    b.ToTable("Planta");
+                });
+
+            modelBuilder.Entity("Vivero.Models.TipoPlanta", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Nombre")
+                        .HasColumnName("Tipo")
+                        .HasColumnType("text");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("TipoPlanta");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -306,6 +358,15 @@ namespace Vivero.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Vivero.Models.Planta", b =>
+                {
+                    b.HasOne("Vivero.Models.TipoPlanta", "TipoPlanta")
+                        .WithMany("Plantas")
+                        .HasForeignKey("IdTipo")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

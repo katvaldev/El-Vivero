@@ -22,8 +22,8 @@ namespace Vivero.Controllers
 
         public IActionResult Index()
         {
-            var listContactos=_context.Contacto.ToList();
-            return View();
+            var listContactos=_context.Contacto.Where(x => x.Mensaje != null).ToList();
+            return View(listContactos);
         }
         public IActionResult Create()
         {
@@ -38,10 +38,17 @@ namespace Vivero.Controllers
                 _context.Add(contacto);
                 _context.SaveChanges();
                 contacto.Respuesta="Gracias " + contacto.Nombre + ", lo contactaremos lo más pronto posible.";
-            }         
+                return RedirectToAction("ContactoConfirmacion", contacto);
+            }
+
             return View(contacto);
         }
 
+        //confirmacion
+        public IActionResult ContactoConfirmacion(Contacto c)
+        {
+            return View("ContactoConfirmacion",c);
+        }
         // ObtenerContacto
         public async Task<IActionResult> Edit(int? id)
         {

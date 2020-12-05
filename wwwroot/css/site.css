@@ -19,13 +19,13 @@ a.navbar-brand {
 }
 
 /* Kat */
-.navbar-nav i:hover{
+.navbar-nav #car:hover{
   transition: all 0.2s ease;
   font-size: 2rem;
   color: #39A805;
 }
 
-.navbar a:hover{
+.navbar .nav-link:hover {
   border-bottom:3px solid #39A805;
 }
 

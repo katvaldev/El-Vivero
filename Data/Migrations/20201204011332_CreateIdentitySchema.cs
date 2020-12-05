@@ -56,13 +56,26 @@ namespace Vivero.Data.Migrations
                     Nombre = table.Column<string>(nullable: false),
                     Apellido = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Telefono = table.Column<string>(nullable: false),
+                    Telefono = table.Column<string>(maxLength: 9, nullable: false),
                     Asunto = table.Column<string>(nullable: true),
                     Mensaje = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Contacto", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoPlanta",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Tipo = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoPlanta", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -171,6 +184,29 @@ namespace Vivero.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Planta",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nombre_planta = table.Column<string>(nullable: true),
+                    Imagen_planta = table.Column<string>(nullable: true),
+                    Precio = table.Column<double>(nullable: false),
+                    Stock = table.Column<int>(nullable: false),
+                    IdTipo = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Planta", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Planta_TipoPlanta_IdTipo",
+                        column: x => x.IdTipo,
+                        principalTable: "TipoPlanta",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -207,6 +243,11 @@ namespace Vivero.Data.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Planta_IdTipo",
+                table: "Planta",
+                column: "IdTipo");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -230,10 +271,16 @@ namespace Vivero.Data.Migrations
                 name: "Contacto");
 
             migrationBuilder.DropTable(
+                name: "Planta");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "TipoPlanta");
         }
     }
 }
