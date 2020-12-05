@@ -1,6 +1,9 @@
 @model IEnumerable<Vivero.Models.Planta>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 48ecdb141f209e7eb66084aa8aa6eabb2f1f1731
 @{
     ViewData["Title"] = "Plantas";
 }
@@ -86,13 +89,13 @@
 {
 
 <div class="card" style="width: 18rem;">
-  <a asp-area="" asp-controller="Plantas" asp-action="Detalle" asp-route-id="@item.ID">
+  <a asp-area="" asp-controller="Plantas" asp-action="Detalle" asp-route-id="@item.IDplanta">
   <img src="@Html.DisplayFor(modelItem => item.imagePlanta)" class="card-img-top" alt="...">
   </a>
   <div class="card-body">
     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nombreplanta)</h5>
     <p class="card-text">@Html.DisplayFor(modelItem => item.precio)</p>
-    <a href="#" class="btn btn-primary" asp-controller="Plantas" asp-action="Comprar" asp-route-id="@item.ID">COMPRAR</a>
+    <a href="#" class="btn btn-primary" asp-controller="Plantas" asp-action="Comprar" asp-route-id="@item.IDplanta">COMPRAR</a>
   </div>
 </div>
 
