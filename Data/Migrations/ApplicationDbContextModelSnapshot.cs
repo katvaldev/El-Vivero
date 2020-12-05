@@ -268,7 +268,7 @@ namespace Vivero.Data.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("IDTipoplanta")
+                    b.Property<int>("IDTipoPlanta")
                         .HasColumnType("integer");
 
                     b.Property<string>("Nombreplanta")
@@ -307,24 +307,26 @@ namespace Vivero.Data.Migrations
 
                     b.HasKey("IDplanta");
 
-                    b.HasIndex("IDTipoplanta");
+                    b.HasIndex("IDTipoPlanta");
 
                     b.ToTable("Planta");
                 });
 
             modelBuilder.Entity("Vivero.Models.TipoPlanta", b =>
                 {
-                    b.Property<int>("IDTipoplanta")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("ID")
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Tipo")
+                    b.Property<string>("Nombre")
+                        .HasColumnName("Tipo")
                         .HasColumnType("text");
 
-                    b.HasKey("IDTipoplanta");
+                    b.HasKey("ID");
 
-                    b.ToTable("Tipoplanta");
+                    b.ToTable("TipoPlanta");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -382,7 +384,7 @@ namespace Vivero.Data.Migrations
                 {
                     b.HasOne("Vivero.Models.TipoPlanta", "TipoPlanta")
                         .WithMany("Plantas")
-                        .HasForeignKey("IDTipoplanta")
+                        .HasForeignKey("IDTipoPlanta")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

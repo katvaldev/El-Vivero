@@ -6,16 +6,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Vivero.Models
 
 {
-    [Table("Tipoplanta")]
+    [Table("TipoPlanta")]
     public class TipoPlanta
     {
-        [Key]
-        public int IDTipoplanta { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("ID")]
+        public int ID { get; set; }
 
+        [Column("Tipo")]
+        public string Nombre { get; set; }
 
-        public string Tipo  { get; set; }
-
+        // [ForeignKey("IDTipoPlanta")]
         public ICollection<Planta> Plantas { get; set; }
 
     }
+    
 }

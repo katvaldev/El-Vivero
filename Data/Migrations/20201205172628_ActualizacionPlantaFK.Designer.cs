@@ -10,8 +10,8 @@ using Vivero.Data;
 namespace Vivero.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201204011332_CreateIdentitySchema")]
-    partial class CreateIdentitySchema
+    [Migration("20201205172628_ActualizacionPlantaFK")]
+    partial class ActualizacionPlantaFK
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -264,34 +264,52 @@ namespace Vivero.Data.Migrations
 
             modelBuilder.Entity("Vivero.Models.Planta", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("IDplanta")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ID")
+                        .HasColumnName("id")
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("IdTipo")
+                    b.Property<int>("IDTipoPlanta")
                         .HasColumnType("integer");
 
-                    b.Property<string>("imagePlanta")
-                        .HasColumnName("Imagen_planta")
+                    b.Property<string>("Nombreplanta")
+                        .IsRequired()
+                        .HasColumnName("nombre_planta")
                         .HasColumnType("text");
 
-                    b.Property<string>("planta")
-                        .HasColumnName("Nombre_planta")
-                        .HasColumnType("text");
-
-                    b.Property<double>("precio")
-                        .HasColumnName("Precio")
+                    b.Property<double>("TemperaturaAplanta")
+                        .HasColumnName("TemperaturaA_planta")
                         .HasColumnType("double precision");
 
+                    b.Property<double>("TemperaturaBplanta")
+                        .HasColumnName("TemperaturaB_planta")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("imagePlanta")
+                        .IsRequired()
+                        .HasColumnName("imagen_planta")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("precio")
+                        .HasColumnName("precio")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("riegoPlanta")
+                        .HasColumnName("Riego_planta")
+                        .HasColumnType("text");
+
                     b.Property<int>("stock")
-                        .HasColumnName("Stock")
+                        .HasColumnName("stock")
                         .HasColumnType("integer");
 
-                    b.HasKey("ID");
+                    b.Property<string>("tipsPlanta")
+                        .HasColumnName("Tips_planta")
+                        .HasColumnType("text");
 
-                    b.HasIndex("IdTipo");
+                    b.HasKey("IDplanta");
+
+                    b.HasIndex("IDTipoPlanta");
 
                     b.ToTable("Planta");
                 });
@@ -368,7 +386,7 @@ namespace Vivero.Data.Migrations
                 {
                     b.HasOne("Vivero.Models.TipoPlanta", "TipoPlanta")
                         .WithMany("Plantas")
-                        .HasForeignKey("IdTipo")
+                        .HasForeignKey("IDTipoPlanta")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

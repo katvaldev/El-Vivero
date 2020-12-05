@@ -15,23 +15,23 @@ namespace Vivero.Models
         public int IDplanta { get; set; }
 
         [Display(Name="nombre_planta")]
-        [Required(ErrorMessage = "Por favor, Ingrese el nombre de la Planta")]
+        [Required(ErrorMessage = "Por favor, ingrese el nombre de la Planta")]
         [Column("nombre_planta")]
         public string Nombreplanta { get; set; }
 
         [Display(Name="imagen_planta")]
-        [Required(ErrorMessage = "Por favor, Ingrese el imagen de la Planta")]
+        [Required(ErrorMessage = "Por favor, ingrese la imagen de la Planta")]
         [Column("imagen_planta")]
         public string imagePlanta { get; set; }
 
         [Display(Name="precio")]
-        [Required(ErrorMessage = "Por favor, Ingrese el precio de la Planta")]
+        [Required(ErrorMessage = "Por favor, ingrese el precio de la Planta")]
         [Column("precio")]
         public decimal precio { get; set; }
 
 
         [Display(Name="stock")]
-        [Required(ErrorMessage = "Por favor, Ingrese el stock de la Planta")]
+        [Required(ErrorMessage = "Por favor, ingrese el stock de la Planta")]
         [Column("stock")]
         public int stock { get; set; }
 
@@ -59,9 +59,9 @@ namespace Vivero.Models
         public string tipsPlanta { get; set; }
 
 
-        [ForeignKey("IDTipoplanta")]
+        [ForeignKey("IDTipoPlanta")]
          public TipoPlanta TipoPlanta { get; set; }
-         public int IDTipoplanta { get; set; }
+         public int IDTipoPlanta { get; set; }
 
     }
 }

@@ -188,20 +188,24 @@ namespace Vivero.Data.Migrations
                 name: "Planta",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Nombre_planta = table.Column<string>(nullable: true),
-                    Imagen_planta = table.Column<string>(nullable: true),
-                    Precio = table.Column<double>(nullable: false),
-                    Stock = table.Column<int>(nullable: false),
-                    IdTipo = table.Column<int>(nullable: false)
+                    nombre_planta = table.Column<string>(nullable: false),
+                    imagen_planta = table.Column<string>(nullable: false),
+                    precio = table.Column<decimal>(nullable: false),
+                    stock = table.Column<int>(nullable: false),
+                    TemperaturaA_planta = table.Column<double>(nullable: false),
+                    TemperaturaB_planta = table.Column<double>(nullable: false),
+                    Riego_planta = table.Column<string>(nullable: true),
+                    Tips_planta = table.Column<string>(nullable: true),
+                    IDTipoplanta = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Planta", x => x.ID);
+                    table.PrimaryKey("PK_Planta", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Planta_TipoPlanta_IdTipo",
-                        column: x => x.IdTipo,
+                        name: "FK_Planta_TipoPlanta_IDTipoplanta",
+                        column: x => x.IDTipoplanta,
                         principalTable: "TipoPlanta",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -245,9 +249,9 @@ namespace Vivero.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Planta_IdTipo",
+                name: "IX_Planta_IDTipoplanta",
                 table: "Planta",
-                column: "IdTipo");
+                column: "IDTipoplanta");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

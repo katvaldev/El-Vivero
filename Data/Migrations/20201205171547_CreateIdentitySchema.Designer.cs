@@ -10,8 +10,8 @@ using Vivero.Data;
 namespace Vivero.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201205170409_ActualizacionPlanta")]
-    partial class ActualizacionPlanta
+    [Migration("20201205171547_CreateIdentitySchema")]
+    partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -316,17 +316,19 @@ namespace Vivero.Data.Migrations
 
             modelBuilder.Entity("Vivero.Models.TipoPlanta", b =>
                 {
-                    b.Property<int>("IDTipoplanta")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("ID")
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Tipo")
+                    b.Property<string>("Nombre")
+                        .HasColumnName("Tipo")
                         .HasColumnType("text");
 
-                    b.HasKey("IDTipoplanta");
+                    b.HasKey("ID");
 
-                    b.ToTable("Tipoplanta");
+                    b.ToTable("TipoPlanta");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
