@@ -1,4 +1,7 @@
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Vivero.Data;
 using Vivero.Models;
@@ -23,6 +26,12 @@ namespace Vivero.Controllers
         }
 
 
+        public IActionResult Formulario(){
+            
+            return View("Formulario");
+
+        }
+
         
         [HttpPost]
         public IActionResult Cargar(Planta objPlanta){
@@ -31,8 +40,13 @@ namespace Vivero.Controllers
                 _context.Add(objPlanta);
                 _context.SaveChanges();
                 objPlanta.Respuesta = "Producto cargado a la tienda";
+                return View(objPlanta);
+            }else
+            {
+                objPlanta.Respuesta = "Error no se pudo cargar a la tienda";
+                return View(objPlanta);
             }
-            return View(objPlanta);
+            
         }
         
 

@@ -1,5 +1,6 @@
 @model Vivero.Models.Planta
 
+
 @{
     ViewData["Title"] = "Agregar Planta";
 }
@@ -16,7 +17,7 @@
 
             <div class="form-group">
                 <label asp-for="imagePlanta" class="control-label"></label>
-                <input asp-for="imagePlanta" class="form-control" />
+                <input type="file"  asp-for="imagePlanta" class="form-control"/>
             </div>               
                    
             <div class="form-group">
@@ -27,17 +28,37 @@
             <div class="form-group">
                 <label asp-for="stock" class="control-label"></label>
                 <input asp-for="stock" class="form-control" />
-            </div>                                  
+            </div>  
 
             <div class="form-group">
-                 <button type="submit" class="btn btn-default">Cargar</button> 
+                <label asp-for="TemperaturaAplanta" class="control-label"></label>
+                <input asp-for="TemperaturaAplanta" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TemperaturaBplanta" class="control-label"></label>
+                <input asp-for="TemperaturaBplanta" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="riegoPlanta" class="control-label"></label>
+                <input asp-for="riegoPlanta" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="tipsPlanta" class="control-label"></label>
+                <input asp-for="tipsPlanta" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                 <button type="submit"  class="btn btn-success">Cargar</button> 
             </div>                
 
         </form>
             
 
 
-        <td></td>    
+        <td>@Html.DisplayTextFor(model => model.Respuesta)</td>    
     
 
 
