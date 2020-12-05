@@ -1,19 +1,17 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using El_Vivero.Models;
 
 
 namespace Vivero.Models
 {
-
     [Table("Planta")]
     public class Planta
-    {
-        
+    {      
         [Display(Name="id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
+        [Key]
         public int IDplanta { get; set; }
 
         [Display(Name="nombre_planta")]
@@ -39,15 +37,7 @@ namespace Vivero.Models
 
 
         [NotMapped]
-        public string Respuesta { get; set; }
-
-    
-        public int IDTipoplanta { get; set; }
-
-        public Tipoplanta Tipo { get; set; }
-
-
-
+        public string Respuesta { get; set; }   
 
         [Display(Name="Temperatura Inicial")]
         [Column("TemperaturaA_planta")]
@@ -69,10 +59,9 @@ namespace Vivero.Models
         public string tipsPlanta { get; set; }
 
 
-        [ForeignKey("IdTipo")]
+        [ForeignKey("IDTipoplanta")]
          public TipoPlanta TipoPlanta { get; set; }
-         public int IdTipo { get; set; }
-
+         public int IDTipoplanta { get; set; }
 
     }
 }

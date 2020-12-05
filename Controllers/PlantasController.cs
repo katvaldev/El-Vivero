@@ -29,20 +29,6 @@ namespace Vivero.Controllers
             return View();
         }
 
-        
- 
-
-        [HttpPost]
-        public IActionResult Cargar(Planta objPlanta){
-            if (ModelState.IsValid)
-            {
-                 _context.Add(objPlanta);
-                _context.SaveChanges();
-                objPlanta.Respuesta="Planta agregada.";
-            }
-            return View(objPlanta);
-        }
-
 
 
         public IActionResult Detalle(Planta objPlanta){

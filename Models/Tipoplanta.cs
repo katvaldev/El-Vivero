@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Vivero.Models;
 
-namespace El_Vivero.Models
+namespace Vivero.Models
 
 {
-
-
     [Table("Tipoplanta")]
-    public class Tipoplanta
+    public class TipoPlanta
     {
+        [Key]
         public int IDTipoplanta { get; set; }
 
 
