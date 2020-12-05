@@ -1,4 +1,6 @@
-@model Vivero.Models.Planta
+@model IEnumerable<Vivero.Models.Planta>
+
+
 @{
     ViewData["Title"] = "Plantas";
 }
@@ -78,18 +80,21 @@
   </div>
 </div>
 
+
+
 @foreach (var item in Model)
 {
-    
+
 <div class="card" style="width: 18rem;">
+  <a asp-area="" asp-controller="Plantas" asp-action="Detalle" asp-route-id="@item.ID">
   <img src="@Html.DisplayFor(modelItem => item.imagePlanta)" class="card-img-top" alt="...">
+  </a>
   <div class="card-body">
     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nombreplanta)</h5>
     <p class="card-text">@Html.DisplayFor(modelItem => item.precio)</p>
-    <a href="#" class="btn btn-primary">COMPRAR</a>
+    <a href="#" class="btn btn-primary" asp-controller="Plantas" asp-action="Comprar" asp-route-id="@item.ID">COMPRAR</a>
   </div>
 </div>
-
 
 }
 

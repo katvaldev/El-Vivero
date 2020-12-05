@@ -32,6 +32,19 @@ namespace Vivero.Controllers
 
         }
 
+
+        public IActionResult Detalle(Planta objPlanta){
+            
+            return View("Detalle", objPlanta);
+
+        }
+
+
+        public IActionResult Comprar(Planta objPlanta){
+            
+            return View("Comprar", objPlanta);
+
+        }
         
         [HttpPost]
         public IActionResult Cargar(Planta objPlanta){
