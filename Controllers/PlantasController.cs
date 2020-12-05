@@ -1,8 +1,12 @@
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Vivero.Data;
 using Vivero.Models;
 
@@ -25,12 +29,20 @@ namespace Vivero.Controllers
             return View();
         }
 
+        
+ 
 
-        public IActionResult Formulario(){
-            
-            return View("Formulario");
-
+        [HttpPost]
+        public IActionResult Cargar(Planta objPlanta){
+            if (ModelState.IsValid)
+            {
+                 _context.Add(objPlanta);
+                _context.SaveChanges();
+                objPlanta.Respuesta="Planta agregada.";
+            }
+            return View(objPlanta);
         }
+
 
 
         public IActionResult Detalle(Planta objPlanta){
@@ -39,6 +51,11 @@ namespace Vivero.Controllers
 
         }
 
+        public IActionResult Formulario()
+        {
+            return View("Formulario");
+        }
+        
 
         public IActionResult Comprar(Planta objPlanta){
             

@@ -1,31 +1,52 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using El_Vivero.Models;
+
 
 namespace Vivero.Models
 {
+
+    [Table("Planta")]
     public class Planta
     {
+        
+        [Display(Name="id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("ID")]
+        [Column("id")]
         public int IDplanta { get; set; }
 
-        [Display(Name="Nombre")]
-        [Column("Nombre_planta")]
+        [Display(Name="nombre_planta")]
+        [Required(ErrorMessage = "Por favor, Ingrese el nombre de la Planta")]
+        [Column("nombre_planta")]
         public string Nombreplanta { get; set; }
 
-        [Display(Name="Imagen")]
-        [Column("Imagen_planta")]
+        [Display(Name="imagen_planta")]
+        [Required(ErrorMessage = "Por favor, Ingrese el imagen de la Planta")]
+        [Column("imagen_planta")]
         public string imagePlanta { get; set; }
 
+        [Display(Name="precio")]
+        [Required(ErrorMessage = "Por favor, Ingrese el precio de la Planta")]
+        [Column("precio")]
+        public decimal precio { get; set; }
 
-        [Display(Name="Precio")]
-        [Column("Precio")]
-        public double precio { get; set; }
 
-
-        [Display(Name="Stock")]
-        [Column("Stock")]
+        [Display(Name="stock")]
+        [Required(ErrorMessage = "Por favor, Ingrese el stock de la Planta")]
+        [Column("stock")]
         public int stock { get; set; }
+
+
+        [NotMapped]
+        public string Respuesta { get; set; }
+
+    
+        public int IDTipoplanta { get; set; }
+
+        public Tipoplanta Tipo { get; set; }
+
+
 
 
         [Display(Name="Temperatura Inicial")]
@@ -51,10 +72,6 @@ namespace Vivero.Models
         [ForeignKey("IdTipo")]
          public TipoPlanta TipoPlanta { get; set; }
          public int IdTipo { get; set; }
-
-        [NotMapped]
-
-        public string Respuesta { get; set; }
 
 
     }

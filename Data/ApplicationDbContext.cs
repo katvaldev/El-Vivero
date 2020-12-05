@@ -13,8 +13,8 @@ namespace Vivero.Data
             : base(options)
         {
         }
-        public DbSet<Contacto> Contacto {get; set;}
-        public DbSet<Planta> Planta { get; set; }
+        public DbSet<Vivero.Models.Contacto> Contacto {get; set;}
+        public DbSet<Vivero.Models.Planta> Planta { get; set; }
         public DbSet<TipoPlanta> TipoPlanta { get; set; }
     }
 }

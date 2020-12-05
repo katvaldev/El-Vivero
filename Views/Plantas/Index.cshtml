@@ -1,14 +1,9 @@
 @model IEnumerable<Vivero.Models.Planta>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 48ecdb141f209e7eb66084aa8aa6eabb2f1f1731
 @{
     ViewData["Title"] = "Plantas";
 }
 
-@* Cambiar el nombre del h3 según el tipo elegido en el combobox (interior o exterior) *@
 <div class="row">
   <div class="col-md-4">
     <h3 class="titulo">Plantas </h3>
@@ -23,6 +18,13 @@
     <a class="dropdown-item" href="#">Plantas de interior</a>
     <a class="dropdown-item" href="#">Plantas de exterior</a>
   </div>
+
+          
+    <a class="nav-link text-dark" asp-area="" asp-controller="Plantas" asp-action="Formulario">Formulario</a>
+  
+  
+  
+</div>
 
 <a asp-area="" asp-controller="Plantas" asp-action="Formulario">
   		<button type="button" class="btn btn-outline-light" asp-area="" asp-controller="Plantas" asp-action="Formulario" >
@@ -72,6 +74,75 @@
 </div>
 
 
+<table>
+		<thead>
+			<tr>
+				<th scope="col">
+					Imagen
+				</th>
+				<th scope="col">
+					Nombre
+				</th>
+				<th scope="col">
+					Precio
+				</th>
+				<th scope="col">
+					Stock
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+@foreach (var item in Model)
+{
+	
+
+
+            <td>
+               
+            </td>
+            <td>
+                
+            </td>
+			<td>
+               Precio
+            </td>
+            <td>
+                Stock
+            </td>
+		
+
+}
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+		
+
+
+
+
+
+
+    
+<link rel="stylesheet" type="text/css" href="../../wwwroot/css/boxlight.css">
+
+		<link rel="stylesheet" type="text/css" href="../../wwwroot/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="../../wwwroot/css/blocks_styl.css">
+	
+		 
+	
+
 
 
 <div class="card" style="width: 18rem;">
@@ -99,17 +170,64 @@
   </div>
 </div>
 
-}
 
 
 
 
+  <script src="../../wwwroot/css/jquery-3.2.1.min.js.descarga" type="text/javascript"></script>
+  <script type="text/javascript">
+
+	$(document).ready(function() {
+		
+
+		function sliderOw(){
+			$('.b56-wrap-ctn').addClass('owl-carousel')
+			$('.b56-wrap-ctn').owlCarousel({
+				loop:false,
+				margin:20,
+				nav:true,
+				// autoplay:true,
+				autoplayTimeout: 3000,
+				// navText:['<span class="icon-arrow-r"></span>','<span class="icon-arrow-r"></span>'],
+				responsive:{
+					320:{
+						items:1,
+						stagePadding: 30
+					},
+					480:{
+						items:2
+					},
+					640:{
+						items:3
+					},
+					960:{
+						items:4
+					},
+					1024:{
+						items:4
+					},
+					1800:{
+						items:5
+					}
+				}
+			});
+		 }
+
+ 		// Cambiar background con data-color.
+ 		function bgcolorHover(){
+ 			$('.b56-item-b').hover(function() {
+ 				var bgcolor = $(this).attr('data-color');
+ 				$(this).css('background-color', bgcolor);
+ 			}, function() {
+ 				$(this).css('background-color', '#fff');
+ 			});
+ 		}
+
+ 		bgcolorHover();
 
 
-
-
-
-
+	});
+</script>	
 
 
 <script>
