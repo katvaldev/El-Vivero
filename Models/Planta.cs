@@ -28,14 +28,10 @@ namespace Vivero.Models
         public int stock { get; set; }
 
 
-        [Display(Name="Temperatura Inicial")]
-        [Column("TemperaturaA_planta")]
-        public double TemperaturaAplanta { get; set; }
+        [Display(Name="Temperatura")]
+        [Column("Temperatura_Planta")]
+        public double TemperaturaPlanta { get; set; }
 
-
-        [Display(Name="Temperatura Final")]
-        [Column("TemperaturaB_planta")]
-        public double TemperaturaBplanta { get; set; }
 
 
         [Display(Name="Riego")]

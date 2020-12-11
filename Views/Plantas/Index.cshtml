@@ -1,14 +1,16 @@
 @model IEnumerable<Vivero.Models.Planta>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 48ecdb141f209e7eb66084aa8aa6eabb2f1f1731
 @{
     ViewData["Title"] = "Plantas";
 }
 
 @* Cambiar el nombre del h3 según el tipo elegido en el combobox (interior o exterior) *@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 <div class="row">
   <div class="col-md-4">
     <h3 class="titulo">Plantas </h3>
@@ -74,32 +76,24 @@
 
 
 
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"></h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
 
 
 
-@foreach (var item in Model)
-{
+
+
 
 <div class="card" style="width: 18rem;">
-  <a asp-area="" asp-controller="Plantas" asp-action="Detalle" asp-route-id="@item.IDplanta">
-  <img src="@Html.DisplayFor(modelItem => item.imagePlanta)" class="card-img-top" alt="...">
+  <a asp-area="" asp-controller="Plantas" asp-action="Detalle" asp-route-id="">
+  <img src="~/images/plantaA.jpg" class="card-img-top" alt="...">
   </a>
   <div class="card-body">
-    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nombreplanta)</h5>
-    <p class="card-text">@Html.DisplayFor(modelItem => item.precio)</p>
-    <a href="#" class="btn btn-primary" asp-controller="Plantas" asp-action="Comprar" asp-route-id="@item.IDplanta">COMPRAR</a>
+    <h5 class="card-title">Nombreplanta</h5>
+    <p class="card-text">precio</p>
+    <a href="#" class="btn btn-primary" asp-controller="Plantas" asp-action="Comprar" asp-route-id="">COMPRAR</a>
   </div>
 </div>
 
-}
+
 
 
 

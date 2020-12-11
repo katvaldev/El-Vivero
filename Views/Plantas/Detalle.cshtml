@@ -5,9 +5,15 @@
 }
 
 @* Cambiar el nombre del h3 según el tipo elegido en el combobox (interior o exterior) *@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 <div class="row">
   <div class="col-md-4">
-    <h3 class="titulo">Plantas </h3>
+    <h3 class="titulo">Detalle de la Planta</h3>
   </div>
 </div>
 
@@ -18,18 +24,47 @@
 </div>
 
 
-@foreach (var item in Model)
-{
+
+
 
 <div class="text-center">
-  <img src="@Html.DisplayFor(modelItem => item.imagePlanta)" class="rounded" alt="...">
+  <img src="~/images/plantaA.jpg" class="rounded" alt="...">
 </div>
 
 
 <div class="card">
   <div class="card-body">
-    @Html.DisplayFor(modelItem => item.riegoPlanta)
+    Riego
   </div>
 </div>
 
-}
+
+<div class="row" >
+
+<h1 class="card-text col-sm-11 offset-sm-1 " align="left"><FONT COLOR="39A805">Helecho</FONT></h1>
+
+  <div class="col-sm-6 offset-sm-3">
+    <div class="card">
+
+    	<h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5><h5 class="card-title col-sm-12">
+    		
+    	</h5>
+    		<img src="./plantaA.jpg" class=" col-sm-7 offset-sm-3 btn btn-light shadow p-3 mb-5 bg-white rounded" alt="..." width="100" height="100">
+      	<div class="card-body">
+
+      	<h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5><h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5>  <h5 class="card-title col-sm-12">
+
+        	<h5 class="card-title"><FONT COLOR="39A805">Temperatura</FONT></h5>
+        	<p class="card-text offset-sm-1">15 °C y 24 °C</p>
+        	<h5 class="card-title "><FONT COLOR="39A805">Riego</FONT></h5>
+        	<p class="card-text offset-sm-1">Abundante en verano y reducir en invierno.
+			Te recomendamos hacerlo con agua de lluvia y no te olvides de pulverizarlo frecuentemente.</p>
+			<h5 class="card-title"><FONT COLOR="39A805">Tips</FONT></h5>
+        	<p class="card-text offset-sm-1">Si no quieres que tu helecho se muera, debes de tener en cuenta estos tips.
+			El sitio debe ser un lugar húmedo donde no reciba directamente la luz  del sol y si lo recibe, debe ser el de la mañana.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
