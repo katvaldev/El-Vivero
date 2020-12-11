@@ -1,12 +1,9 @@
-
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Vivero.Models;
 
 namespace Vivero.Models
-
 {
-    [Table("TipoPlanta")]
     public class TipoPlanta
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,9 +13,7 @@ namespace Vivero.Models
         [Column("Tipo")]
         public string Nombre { get; set; }
 
-        // [ForeignKey("IDTipoPlanta")]
+        // [ForeignKey("IdTipo")]
         public ICollection<Planta> Plantas { get; set; }
-
     }
-    
 }
