@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Vivero.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Vivero.Models
 {
@@ -15,5 +16,6 @@ namespace Vivero.Models
 
         // [ForeignKey("IdTipo")]
         public ICollection<Planta> Plantas { get; set; }
+
     }
 }

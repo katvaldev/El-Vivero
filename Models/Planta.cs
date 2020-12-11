@@ -1,36 +1,36 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Vivero.Models
 {
     [Table("Planta")]
     public class Planta
     {      
-        [Display(Name="id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
         [Key]
         public int IDplanta { get; set; }
 
-        [Display(Name="nombre_planta")]
+        [Display(Name="Nombre")]
         [Required(ErrorMessage = "Por favor, ingrese el nombre de la Planta")]
         [Column("nombre_planta")]
         public string Nombreplanta { get; set; }
 
-        [Display(Name="imagen_planta")]
+        [Display(Name="Imagen")]
         [Required(ErrorMessage = "Por favor, ingrese la imagen de la Planta")]
         [Column("imagen_planta")]
         public string imagePlanta { get; set; }
 
-        [Display(Name="precio")]
+        [Display(Name="Precio")]
         [Required(ErrorMessage = "Por favor, ingrese el precio de la Planta")]
         [Column("precio")]
         public decimal precio { get; set; }
 
 
-        [Display(Name="stock")]
+        [Display(Name="Stock")]
         [Required(ErrorMessage = "Por favor, ingrese el stock de la Planta")]
         [Column("stock")]
         public int stock { get; set; }
@@ -59,6 +59,7 @@ namespace Vivero.Models
         public string tipsPlanta { get; set; }
 
 
+        [Display(Name="Tipo de planta")]
         [ForeignKey("IDTipoPlanta")]
          public TipoPlanta TipoPlanta { get; set; }
          public int IDTipoPlanta { get; set; }
