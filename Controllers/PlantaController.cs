@@ -42,7 +42,21 @@ namespace Vivero.Controllers
         {
             return View("Formulario");
         }
-        
+        [HttpPost]
+        public IActionResult Formulario(Planta planta)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(planta);
+                _context.SaveChanges();
+                planta.Respuesta="Planta creada";
+                return RedirectToAction("VerPlantas");
+            }
+            else{
+                planta.Respuesta="No se pudo añadir";
+                return View(planta);
+            }         
+        }
 
         public IActionResult Comprar(Planta objPlanta){
             
@@ -61,7 +75,7 @@ namespace Vivero.Controllers
                 return View(objPlanta);
             }else
             {
-                objPlanta.Respuesta = "Error no se pudo cargar a la tienda";
+                objPlanta.Respuesta = "Error, no se pudo cargar a la tienda";
                 return View(objPlanta);
             }
             
