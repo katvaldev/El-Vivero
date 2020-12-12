@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Vivero.Controllers
 {
-    public class PlagasController : Controller
+    public class PlagaController : Controller
     {
         public IActionResult Index()
         {

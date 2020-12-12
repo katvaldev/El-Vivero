@@ -10,53 +10,56 @@ namespace Vivero.Models
     public class Planta
     {      
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("id")]
+        [Column("ID")]
         [Key]
-        public int IDplanta { get; set; }
+        public int ID { get; set; }
 
         [Display(Name="Nombre")]
         [Required(ErrorMessage = "Por favor, ingrese el nombre de la Planta")]
-        [Column("nombre_planta")]
-        public string Nombreplanta { get; set; }
+        [Column("Nombre")]
+        public string Nombre { get; set; }
 
         [Display(Name="Imagen")]
         [Required(ErrorMessage = "Por favor, ingrese la imagen de la Planta")]
-        [Column("imagen_planta")]
-        public string imagePlanta { get; set; }
+        [Column("Imagen")]
+        public byte[] Imagen { get; set; }
+
+        [NotMapped]
+        public String ImageData { get; set; }
 
         [Display(Name="Precio")]
         [Required(ErrorMessage = "Por favor, ingrese el precio de la Planta")]
-        [Column("precio")]
-        public decimal precio { get; set; }
+        [Column("Precio")]
+        public decimal Precio { get; set; }
 
 
         [Display(Name="Stock")]
-        [Required(ErrorMessage = "Por favor, ingrese el stock de la Planta")]
-        [Column("stock")]
-        public int stock { get; set; }
+        [Required(ErrorMessage = "Por favor, ingrese stock")]
+        [Column("Stock")]
+        public int Stock { get; set; }
 
 
         [NotMapped]
         public string Respuesta { get; set; }   
 
         [Display(Name="Temperatura Inicial")]
-        [Column("TemperaturaA_planta")]
+        [Column("Temperatura Inicial")]
         public double TemperaturaAplanta { get; set; }
 
 
         [Display(Name="Temperatura Final")]
-        [Column("TemperaturaB_planta")]
+        [Column("Temperatura Final")]
         public double TemperaturaBplanta { get; set; }
 
 
         [Display(Name="Riego")]
-        [Column("Riego_planta")]
-        public string riegoPlanta { get; set; }
+        [Column("Riego")]
+        public string Riego { get; set; }
 
 
         [Display(Name="Tips")]
-        [Column("Tips_planta")]
-        public string tipsPlanta { get; set; }
+        [Column("Tips")]
+        public string Tips { get; set; }
 
 
         [Display(Name="Tipo de planta")]

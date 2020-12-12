@@ -6,10 +6,19 @@
 {
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="" asp-controller="Contacto" asp-action="Index">Lista Contactos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Planta" asp-action="VerPlantas"> Gestión Plantas</a>
     </li>  
 }
 else{
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="" asp-controller="Contacto" asp-action="Create">Contacto</a>
     </li>  
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Planta" asp-action="Index"> Plantas</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </li> 
 }

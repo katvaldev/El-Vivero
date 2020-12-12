@@ -15,7 +15,7 @@ namespace Vivero.Models
         public string Nombre { get; set; }
 
         // [ForeignKey("IdTipo")]
-        public ICollection<Planta> Plantas { get; set; }
+        // public ICollection<Planta> Plantas { get; set; }
 
     }
 }

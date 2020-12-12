@@ -9,7 +9,7 @@
     <thead class="thead-dark">
         <tr>
                 <th scope="col">
-                    #
+                    Acción
                 </th>
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Nombre)
@@ -38,8 +38,8 @@
     {
         <tr>
             <th scope="row">
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Borrar</a>
             </th>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)

@@ -1,0 +1,39 @@
+@model dynamic
+
+@{
+    ViewData["Title"] = "Planta";
+}
+
+<div class="row">
+	<div class="col-md-4">
+		<h3 class="titulo">Plantas </h3>
+	</div>
+</div>
+
+<div class="dropdown p-3 mb-2 bg-success">
+		<button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-leaf"></i>
+			Tipo de planta
+		</button>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<a class="dropdown-item" href="#">Plantas de interior</a>
+			<a class="dropdown-item" href="#">Plantas de exterior</a>
+  		</div>
+</div>
+
+<div class="container">
+	@* @foreach (Planta planta in Model.Planta)
+	{ *@
+		<a asp-controller="Plantas" asp-action="Detalle">
+			<button type="button" class="btn btn-light" >
+				<div style="width: 18rem;">		
+					<img src="~/images/plantaA.jpg" class="card-img-top " alt="...">			
+					<div class="card-body">
+						<h5 class="card-tittle" align="center">@*@planta.Nombre*@Planta1</h5>
+						<a href="#" align="center" class="btn btn-outline-success">Editar</a>
+                        <a href="#" align="center" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+					</div>
+				</div>
+			</button>
+		</a>
+	@* } *@
+</div>
