@@ -15,11 +15,13 @@
 			Tipo de planta
 		</button>
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<a class="dropdown-item" href="#">Plantas de interior</a>
-			<a class="dropdown-item" href="#">Plantas de exterior</a>
-  		</div>    
-        <a class="btn btn-outline-light" href="~/Planta/Formulario">Agregar</a>
-    </div>
+			@foreach (var item in Model.TipoPlanta)
+			{
+				<a class="dropdown-item" href="#">@item.Nombre</a>
+			} 
+  		</div>
+		<a class="btn btn-outline-light" href="~/Planta/Formulario">Agregar</a>
+	</div>
 
 <div class="container">
 	@* @foreach (Planta planta in Model.Planta)

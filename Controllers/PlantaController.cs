@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Vivero.Data;
 using Vivero.Models;
+using System.Dynamic;
 
 namespace Vivero.Controllers
 {
@@ -26,11 +27,21 @@ namespace Vivero.Controllers
         
         
         public IActionResult Index(){
-            return View();
+            var ListaTipo = _context.TipoPlanta.ToList();
+            Planta planta = new Planta();
+            dynamic model = new ExpandoObject();
+            model.planta = planta;
+            model.TipoPlanta = ListaTipo;
+            return View(model);
         }
 
         public IActionResult VerPlantas(){
-            return View("VerPlantas");
+            var ListaTipo = _context.TipoPlanta.ToList();
+            Planta planta = new Planta();
+            dynamic model = new ExpandoObject();
+            model.planta = planta;
+            model.TipoPlanta = ListaTipo;
+            return View(model);
         }
 
         public IActionResult Detalle(Planta objPlanta){
@@ -40,7 +51,12 @@ namespace Vivero.Controllers
 
         public IActionResult Formulario()
         {
-            return View("Formulario");
+            var ListaTipo = _context.TipoPlanta.ToList();
+            Planta planta = new Planta();
+            dynamic model = new ExpandoObject();
+            model.planta = planta;
+            model.TipoPlanta = ListaTipo;
+            return View(model);
         }
         [HttpPost]
         public IActionResult Formulario(Planta planta)

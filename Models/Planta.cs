@@ -42,14 +42,9 @@ namespace Vivero.Models
         [NotMapped]
         public string Respuesta { get; set; }   
 
-        [Display(Name="Temperatura Inicial")]
-        [Column("Temperatura Inicial")]
-        public double TemperaturaAplanta { get; set; }
-
-
-        [Display(Name="Temperatura Final")]
-        [Column("Temperatura Final")]
-        public double TemperaturaBplanta { get; set; }
+        [Display(Name="Temperatura Ideal")]
+        [Column("Temperatura Ideal")]
+        public string TemperaturaIdeal { get; set; }
 
 
         [Display(Name="Riego")]

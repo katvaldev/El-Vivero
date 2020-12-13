@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Planta";
+	@* Planta planta = @Model.planta; *@
 }
 
 <div class="row">
@@ -10,32 +11,19 @@
 	</div>
 </div>
 
-@* TODO: *@
-	@* <div class="dropdown p-3 mb-2 bg-success">
-	<button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-leaf"></i>
-		Tipo de planta
-	</button>
-	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		@foreach (TipoPlanta tipo in Model.TipoPlanta)
-		{
-			<a class="dropdown-item" href="#">@tipo.Nombre</a>
-		}
-		@* <a class="dropdown-item" href="#">Plantas de exterior</a> 
-	</div>		
-	</div>*@
-	<!-- <a class="nav-link text-dark" asp-area="" asp-controller="Plantas" asp-action="Formulario">Formulario</a> -->
-
 	<div class="dropdown p-3 mb-2 bg-success">
 		<button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-leaf"></i>
 			Tipo de planta
 		</button>
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<a class="dropdown-item" href="#">Plantas de interior</a>
-			<a class="dropdown-item" href="#">Plantas de exterior</a>
+			@foreach (var item in Model.TipoPlanta)
+			{
+				<a class="dropdown-item" href="#">@item.Nombre</a>
+			} 
   		</div>
 	</div>
 
-<div class="container">
+@* <div class="container">
 	@foreach (Planta planta in Model.Planta)
 	{
 		<a asp-controller="Plantas" asp-action="Detalle">
@@ -51,5 +39,5 @@
 			</button>
 		</a>
 	}
-</div>
+</div> *@
 
