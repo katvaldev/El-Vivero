@@ -15,7 +15,7 @@ namespace Vivero.Models
         [Column("Nombre")]
         public string Nombre { get; set; }
 
-        [Required(ErrorMessage = "Por favor, ingrese Apellido")]
+        [Required(ErrorMessage = "Por favor, ingrese su apellido")]
         [Display(Name="Apellido")]
         [Column("Apellido")]
         public string Apellido { get; set; }

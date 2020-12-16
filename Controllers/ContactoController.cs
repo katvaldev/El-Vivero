@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -20,6 +21,7 @@ namespace Vivero.Controllers
             _context = context;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             var listContactos=_context.Contacto.Where(x => x.Mensaje != null).ToList();
