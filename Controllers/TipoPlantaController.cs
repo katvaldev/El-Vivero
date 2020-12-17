@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Vivero.Data;
 using Vivero.Models;
 using System.Collections.Generic;
+using System.Dynamic;
 
 namespace Vivero.Controllers
 {
@@ -12,7 +13,7 @@ namespace Vivero.Controllers
     {
         private readonly ILogger<TipoPlantaController> _logger;
         private readonly ApplicationDbContext _context;
-
+ 
 
         public TipoPlantaController(ILogger<TipoPlantaController> logger,
         ApplicationDbContext context)
@@ -23,26 +24,19 @@ namespace Vivero.Controllers
 
         public IActionResult Index()
         {
-        //   var listaTipo = (from tipo in _context.TipoPlanta
-        //                           select new SelectListItem()
-        //                           {
-        //                               Text = tipo.Nombre,
-        //                               Value = tipo.ID.ToString(),
-        //                           }).ToList();
-
-        //     listaTipo.Insert(0, new SelectListItem()
-        //     {
-        //         Text = "----Selecciona----",
-        //         Value = string.Empty
-        //     });
-
-        //     TipoPlantaViewModel tipoViewModel = new TipoPlantaViewModel();
-        //     tipoViewModel.ListaTipoPlanta = listaTipo;
-
-            // return View();
-
-            var listTipos=_context.TipoPlanta.ToList();
-            return View(listTipos);
+            var ListaPlantas = _context.Planta.ToList();
+            var ListaTipo = _context.TipoPlanta.ToList();
+            foreach(var planta in ListaPlantas)
+            {
+                foreach(var tipo in ListaTipo)
+                {     
+                    if(planta.IDTipoPlanta==tipo.ID)           
+                    tipo.Plantas.Add(planta);
+                }
+            }
+            // dynamic model = new ExpandoObject();
+            // model.TipoPlanta = ListaTipo;
+            return View(ListaTipo);
         }
     }
 }

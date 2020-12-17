@@ -1,11 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Vivero.Data;
 using Vivero.Models;
@@ -23,14 +19,13 @@ namespace Vivero.Controllers
         {
             _logger = logger;
             _context = context;
-        }        
-        
+        }            
         
         public IActionResult Index(){
             var ListaTipo = _context.TipoPlanta.ToList();
-            Planta planta = new Planta();
-            dynamic model = new ExpandoObject();
-            model.planta = planta;
+            // Planta planta = new Planta();
+            dynamic model = new ExpandoObject(); 
+            // model.planta = planta;
             model.TipoPlanta = ListaTipo;
             return View(model);
         }
@@ -58,9 +53,11 @@ namespace Vivero.Controllers
             model.TipoPlanta = ListaTipo;
             return View(model);
         }
+
         [HttpPost]
         public IActionResult Formulario(Planta planta)
         {
+            planta.IDTipoPlanta = int.Parse(Request.Form["IDTipoPlanta"]);
             if (ModelState.IsValid)
             {
                 _context.Add(planta);

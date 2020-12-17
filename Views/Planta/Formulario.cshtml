@@ -10,7 +10,7 @@
     <div class="col-md-4">  
         <h3 class="titulo">Ingresar Planta </h3></p>
 
-        <form asp-controller="Planta" asp-action="Formulario">
+        <form asp-controller="Planta" asp-action="Formulario" method="POST">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="@planta.Nombre" class="control-label"></label>
@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <label asp-for="@planta.TipoPlanta" class="control-label"></label>
-                <select name="Tipo" class="custom-select">
+                <select name="IDTipoPlanta" class="custom-select">
                     @foreach (TipoPlanta tipo in Model.TipoPlanta)
                     {
                         <option value="@tipo.ID">@tipo.Nombre</option>
@@ -28,10 +28,15 @@
                 </select>
             </div>
           
-            <div class="form-group">
+            @* <div class="form-group">
                 <label asp-for="@planta.Imagen" class="control-label"></label>
                 <input type="file" asp-for="@planta.Imagen" class="form-control" accept="image/*"/>
-            </div>               
+            </div>                *@
+
+            <div class="form-group">
+                <label asp-for="@planta.ImagenURL" class="control-label"></label>
+                <input asp-for="@planta.ImagenURL" class="form-control" />
+            </div> 
                    
             <div class="form-group">
                 <label asp-for="@planta.Precio" class="control-label"></label>
@@ -50,7 +55,8 @@
 
             <div class="form-group">
                 <label asp-for="@planta.Riego" class="control-label"></label>
-                <input asp-for="@planta.Riego" class="form-control" />
+                <input asp-for="@planta.Riego" class="form-control" /> 
+                @* textarea *@
             </div>
 
             <div class="form-group">

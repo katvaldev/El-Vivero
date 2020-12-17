@@ -19,13 +19,14 @@ namespace Vivero.Models
         [Column("Nombre")]
         public string Nombre { get; set; }
 
-        [Display(Name="Imagen")]
+        [Display(Name="URL de imagen")]
         [Required(ErrorMessage = "Por favor, ingrese la imagen de la Planta")]
-        [Column("Imagen")]
-        public byte[] Imagen { get; set; }
+        [Column("ImagenURL")]
+        public string ImagenURL { get; set; }
+        // public byte[] Imagen { get; set; }
 
-        [NotMapped]
-        public String ImageData { get; set; }
+        // [NotMapped]
+        // public String ImageData { get; set; }
 
         [Display(Name="Precio")]
         [Required(ErrorMessage = "Por favor, ingrese el precio de la Planta")]
@@ -36,11 +37,7 @@ namespace Vivero.Models
         [Display(Name="Stock")]
         [Required(ErrorMessage = "Por favor, ingrese stock")]
         [Column("Stock")]
-        public int Stock { get; set; }
-
-
-        [NotMapped]
-        public string Respuesta { get; set; }   
+        public int Stock { get; set; }  
 
         [Display(Name="Temperatura Ideal")]
         [Column("Temperatura Ideal")]
@@ -61,6 +58,9 @@ namespace Vivero.Models
         [ForeignKey("IDTipoPlanta")]
          public TipoPlanta TipoPlanta { get; set; }
          public int IDTipoPlanta { get; set; }
+
+         [NotMapped]
+         public string Respuesta { get; set; }
 
     }
 }

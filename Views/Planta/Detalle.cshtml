@@ -16,7 +16,8 @@
 {
 
     <div class="text-center">
-      <img src="@Html.DisplayFor(modelItem => item.Imagen)" class="rounded" alt="...">
+      @* <img src="@Html.DisplayFor(modelItem => item.Imagen)" class="rounded" alt="..."> *@
+      <img src="@Url.Content(item.ImagenURL)" class="rounded">
     </div>
 
 
