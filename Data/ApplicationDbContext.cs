@@ -14,7 +14,8 @@ namespace Vivero.Data
         {
         }
         public DbSet<Contacto> Contacto {get; set;}
-        public DbSet<Planta> Planta { get; set; }
+        public DbSet<Planta> Plantas { get; set; }
         public DbSet<TipoPlanta> TipoPlanta { get; set; }
+        public DbSet<Plaga> Plagas { get; set; }
     }
 }

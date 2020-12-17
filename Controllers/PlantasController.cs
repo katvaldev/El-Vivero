@@ -22,7 +22,8 @@ namespace Vivero.Controllers
         
         
         public IActionResult Index(){
-            return View();
+            var listPlantas=_context.Plantas.ToList();
+            return View(listPlantas);
         }
 
 
