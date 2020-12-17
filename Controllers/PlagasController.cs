@@ -32,7 +32,7 @@ namespace Vivero.Controllers
                 _context.Add(plaga);
                 _context.SaveChanges();
                 plaga.Respuesta="Plaga agregada.";
-                return RedirectToAction("ContactoConfirmacion",plaga);
+                return RedirectToAction("PlagasConfirmacion",plaga);
             }
 
             return View(plaga);
@@ -40,6 +40,11 @@ namespace Vivero.Controllers
 
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Formulario()
         {
             return View();
         }
