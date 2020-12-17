@@ -3,36 +3,41 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Vivero.Models
 {
+
+    [Table("Plaga")]
     public class Plaga
     {
         
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("id")]
+        [Column("IDplaga")]
         public int IDplaga { get; set; }
 
-        
-        [Column("nombreplaga")]
+
+
+        [Column("Descripcion")]
+        public string Descripcion { get; set; }
+
+
+
+        [Column("nombrePlaga")]
         public string nombrePlaga { get; set; }
 
 
 
-        [Column("descripcion")]
-        public string Descripcion { get; set; }
-
+        [Column("Adicional")]
+        public string Adicional { get; set; }
 
 
         [Column("imageplaga")]
         public string imageplaga { get; set; }
 
 
-        [Column("adicional")]
-        public string Adicional { get; set; }
+        
         
 
 
         [NotMapped]
-
         public string Respuesta { get; set; }
 
     }

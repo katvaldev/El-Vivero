@@ -31,11 +31,10 @@ namespace Vivero.Controllers
             {
                 _context.Add(plaga);
                 _context.SaveChanges();
-                plaga.Respuesta="Plaga agregada.";
-                return RedirectToAction("PlagasConfirmacion",plaga);
+                
             }
 
-            return View(plaga);
+            return View("PlagasConfirmacion",plaga);
         }
 
 
