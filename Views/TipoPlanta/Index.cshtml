@@ -1,49 +1,41 @@
-@model List<TipoPlanta>
+@model IEnumerable<Vivero.Models.TipoPlanta>
 
-@{
-	ViewData["Title"] = "Planta";
-}
+<h2>Lista Tipos de Planta</h2>
 
-<div class="row">
-	<div class="col-md-4">
-		<h3 class="titulo">Plantas </h3>
-	</div>
-</div>
+<p>
+    <a asp-action="Create" class="btn btn-outline-light">Crear Tipos</a>
+</p>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+                <th scope="col">
+                    Acción
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th> 
+        </tr>
+    </thead>
 
-<div class="dropdown p-3 mb-2 bg-success">
-	<button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-leaf"></i>
-	Tipo de planta
-	</button>
-	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		@foreach (var item in Model)
-		{
-			<a class="dropdown-item" value="@item.ID">@item.Nombre</a>
-		}
-	</div>
-</div>
+    <tbody>
 
-<div class="container">
-	@foreach (var tipo in Model)
-	{
-		@if(tipo.Plantas.Count()!=0)
-		{
-			<p>Nada por mostrar</p>
-			break;
-		}
-			@foreach (var planta in tipo.Plantas)
-			{
-				<a asp-controller="Plantas" asp-action="Detalle">
-				<button type="button" class="btn btn-light" >
-				<div style="width: 18rem;">
-					<img src="@Url.Content(planta.ImagenURL)" class="card-img-top">
-					<div class="card-body">
-						<h5 class="card-tittle" align="center">@planta.Nombre</h5>
-						<!-- Al Carrito -->
-						<a href="#" align="center" class="btn btn-outline-success">@planta.Precio.ToString()</a>
-					</div>
-				</div>
-				</button>
-				</a>
-			}
-	}
- </div>
+    @if (Model.Count() == 0) {
+            <tr>
+                <td colspan="5" class="text-center">No se encontraron registros.</td>
+            </tr>
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th scope="row">
+                <a asp-action="Edit" asp-route-id="@item.ID"><i class="fas fa-edit"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.ID"><i class="fas fa-trash"></i></a>
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+        </tr>
+    }        
+    </tbody>    
+</table>
