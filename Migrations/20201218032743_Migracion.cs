@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Vivero.Data.Migrations
+namespace Vivero.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class Migracion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,6 +63,21 @@ namespace Vivero.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Contacto", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Plaga",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    nombreplaga = table.Column<string>(nullable: true),
+                    descripcion = table.Column<string>(nullable: true),
+                    adicional = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Plaga", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -188,24 +203,23 @@ namespace Vivero.Data.Migrations
                 name: "Planta",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nombre_planta = table.Column<string>(nullable: false),
-                    imagen_planta = table.Column<string>(nullable: false),
-                    precio = table.Column<decimal>(nullable: false),
-                    stock = table.Column<int>(nullable: false),
-                    TemperaturaA_planta = table.Column<double>(nullable: false),
-                    TemperaturaB_planta = table.Column<double>(nullable: false),
-                    Riego_planta = table.Column<string>(nullable: true),
-                    Tips_planta = table.Column<string>(nullable: true),
-                    IDTipoplanta = table.Column<int>(nullable: false)
+                    Nombre = table.Column<string>(nullable: false),
+                    ImagenURL = table.Column<string>(nullable: false),
+                    Precio = table.Column<decimal>(nullable: false),
+                    Stock = table.Column<int>(nullable: false),
+                    TemperaturaIdeal = table.Column<string>(name: "Temperatura Ideal", nullable: true),
+                    Riego = table.Column<string>(nullable: true),
+                    Tips = table.Column<string>(nullable: true),
+                    IDTipoPlanta = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Planta", x => x.id);
+                    table.PrimaryKey("PK_Planta", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Planta_TipoPlanta_IDTipoplanta",
-                        column: x => x.IDTipoplanta,
+                        name: "FK_Planta_TipoPlanta_IDTipoPlanta",
+                        column: x => x.IDTipoPlanta,
                         principalTable: "TipoPlanta",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -249,9 +263,9 @@ namespace Vivero.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Planta_IDTipoplanta",
+                name: "IX_Planta_IDTipoPlanta",
                 table: "Planta",
-                column: "IDTipoplanta");
+                column: "IDTipoPlanta");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -273,6 +287,9 @@ namespace Vivero.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contacto");
+
+            migrationBuilder.DropTable(
+                name: "Plaga");
 
             migrationBuilder.DropTable(
                 name: "Planta");
