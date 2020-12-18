@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Vivero.Data;
 using Vivero.Models;
 using System.Dynamic;
+using System.Collections.Generic;
 
 namespace Vivero.Controllers
 {
@@ -13,19 +14,19 @@ namespace Vivero.Controllers
     {
         private readonly ILogger<PlantaController> _logger;
         private readonly ApplicationDbContext _context; 
+        private List<Planta> _plantas;
         
         public PlantaController(ILogger<PlantaController> logger,
             ApplicationDbContext context)
         {
             _logger = logger;
             _context = context;
+            _plantas = _context.Planta.ToList();
         }            
         
         public IActionResult Index(){
             var ListaTipo = _context.TipoPlanta.ToList();
-            // Planta planta = new Planta();
             dynamic model = new ExpandoObject(); 
-            // model.planta = planta;
             model.TipoPlanta = ListaTipo;
             return View(model);
         }
@@ -39,9 +40,11 @@ namespace Vivero.Controllers
             return View(model);
         }
 
-        public IActionResult Detalle(Planta objPlanta){
-            
-            return View("Detalle", objPlanta);
+        public IActionResult Detalle()
+        {
+            int id = int.Parse(Request.Form["ID"]);
+            var planta = _plantas.Where(x=>x.ID==id);
+            return View(planta);
         }
 
         public IActionResult Formulario()

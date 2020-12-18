@@ -17,7 +17,7 @@
 	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 		@foreach (var item in Model)
 		{
-			<a class="dropdown-item" href="#">@item.Nombre</a>
+			<a class="dropdown-item" value="@item.ID">@item.Nombre</a>
 		}
 	</div>
 </div>
@@ -25,8 +25,11 @@
 <div class="container">
 	@foreach (var tipo in Model)
 	{
-		@if(tipo.Plantas.Count()!=0)
+		@* @if(tipo.Plantas.Count()!=0)
 		{
+			<p>Nada por mostrar</p>
+			break;
+		} *@
 			@foreach (var planta in tipo.Plantas)
 			{
 				<a asp-controller="Plantas" asp-action="Detalle">
@@ -40,8 +43,7 @@
 					</div>
 				</div>
 				</button>
-			</a>
+				</a>
 			}
-		}
 	}
  </div>

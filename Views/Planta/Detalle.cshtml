@@ -1,4 +1,4 @@
-@model IEnumerable<Vivero.Models.Planta>
+@model Vivero.Models.Planta
 
 @{
     ViewData["Title"] = "Plantas";
@@ -6,25 +6,19 @@
 
 <div class="row">
   <div class="col-md-4">
-    <h3 class="titulo">Plantas </h3>
+    <h3 class="titulo">@Model.Nombre </h3>
   </div>
 </div>
   
 
-
-@foreach (var item in Model)
-{
-
     <div class="text-center">
       @* <img src="@Html.DisplayFor(modelItem => item.Imagen)" class="rounded" alt="..."> *@
-      <img src="@Url.Content(item.ImagenURL)" class="rounded">
+      <img src="@Url.Content(Model.ImagenURL)" class="rounded">
     </div>
 
 
     <div class="card">
       <div class="card-body">
-        @Html.DisplayFor(modelItem => item.Riego)
+        @Html.DisplayFor(modelItem => Model.Riego)
       </div>
     </div>
-
-}
