@@ -2,18 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Vivero.Data;
 
-namespace Vivero.Data.Migrations
+namespace Vivero.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201216223308_PlantaCasiFinal")]
-    partial class PlantaCasiFinal
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,6 +258,31 @@ namespace Vivero.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Contacto");
+                });
+
+            modelBuilder.Entity("Vivero.Models.Plaga", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("adicional")
+                        .HasColumnName("adicional")
+                        .HasColumnType("text");
+
+                    b.Property<string>("descripcion")
+                        .HasColumnName("descripcion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("nombreplaga")
+                        .HasColumnName("nombreplaga")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Plaga");
                 });
 
             modelBuilder.Entity("Vivero.Models.Planta", b =>

@@ -25,11 +25,11 @@
 <div class="container">
 	@foreach (var tipo in Model)
 	{
-		@* @if(tipo.Plantas.Count()!=0)
+		@if(tipo.Plantas.Count()!=0)
 		{
 			<p>Nada por mostrar</p>
 			break;
-		} *@
+		}
 			@foreach (var planta in tipo.Plantas)
 			{
 				<a asp-controller="Plantas" asp-action="Detalle">
