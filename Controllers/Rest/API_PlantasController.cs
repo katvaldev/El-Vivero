@@ -8,7 +8,7 @@ using Vivero.Models;
 namespace El_Vivero.Controllers.Rest
 {
     [ApiController]
-    
+    [Route("API/Planta")]
     public class API_PlantasController : ControllerBase
     {
         private readonly ILogger<API_PlantasController> _logger;
@@ -22,7 +22,7 @@ namespace El_Vivero.Controllers.Rest
         } 
 
         [HttpGet]
-        [Route("API/Planta")]
+
         public IEnumerable<Planta> Get()
         {
             var listaPlantas = _context.Planta.OrderBy(x=>x.ID).ToList();
