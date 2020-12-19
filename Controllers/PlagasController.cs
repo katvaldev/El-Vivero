@@ -56,7 +56,7 @@ namespace Vivero.Controllers
                 return NotFound();
             }
 
-            var plaga = await _context.plaga.FindAsync(id);
+            var plaga = await _context.Plagas.FindAsync(id);
             if (plaga == null)
             {
                 return NotFound();
