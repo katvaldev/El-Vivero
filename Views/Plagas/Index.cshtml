@@ -53,7 +53,7 @@ Las plagas y enfermedades se pueden propagar fácilmente a varios países y alca
     
 
     <tr>
-      <th scope="row"></th>
+      <th scope="row"><a asp-action="Edit" asp-route-id="@item.id">Editar</a> </th>
       <td>@Html.DisplayFor(modelItem => item.id)</td>
       <td>@Html.DisplayFor(modelItem => item.nombreplaga)</td>
       <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
