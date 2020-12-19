@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Vivero.Models
 {
@@ -26,6 +28,11 @@ namespace Vivero.Models
 
         [Column("adicional")]
         public string adicional { get; set; }
+
+
+        [NotMapped]
+        public string Respuesta { get; set; }
+
 
 
     }

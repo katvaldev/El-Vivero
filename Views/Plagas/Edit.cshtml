@@ -1,12 +1,14 @@
 @model Vivero.Models.Plaga
 
 @{
-    ViewData["Title"] = "Registro de Plagas";
+    ViewData["Title"] = "Editar el Registro de Plagas";
 }
 
 
-<form asp-controller="Plagas" asp-action="Create" > 
+<form asp-controller="Plagas" asp-action="Edit" method="POST"> 
 
+
+    <input type="hidden" asp-for="id" />
     <div class="form-group">
     <label >Nombre de la Plaga</label>
     <input type="text" asp-for="nombreplaga" class="form-control" placeholder="Nombre de la Plaga" required>
@@ -25,6 +27,6 @@
     </textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Cargar</button>
+    <button type="submit" class="btn btn-primary">Actualizar Plaga</button>
 
 </form>
