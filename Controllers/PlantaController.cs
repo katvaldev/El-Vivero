@@ -40,10 +40,18 @@ namespace Vivero.Controllers
             return View(model);
         }
 
-        public IActionResult Detalle()
+        public IActionResult Detalle(int? ID)
         {
-            int id = int.Parse(Request.Form["ID"]);
-            var planta = _plantas.Where(x=>x.ID==id);
+            if (ID == null)
+            {
+                return NotFound();
+            }
+            Planta planta = new Planta();
+            foreach(var i in _plantas)
+            {
+                if (i.ID==ID)
+                planta = i;
+            }
             return View(planta);
         }
 

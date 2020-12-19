@@ -56,7 +56,7 @@ namespace Vivero.Models
 
         [Display(Name="Tipo de planta")]
         [ForeignKey("IDTipoPlanta")]
-         public TipoPlanta TipoPlanta { get; set; }
+         public string TipoPlanta { get; set; }
          public int IDTipoPlanta { get; set; }
 
          [NotMapped]

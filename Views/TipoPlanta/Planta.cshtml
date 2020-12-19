@@ -1,7 +1,7 @@
 @model List<TipoPlanta>
 
 @{
-	ViewData["Title"] = "Planta";
+	ViewData["Title"] = "Plantas";
 }
 
 <div class="row">
@@ -27,13 +27,10 @@
 	{
 		@if(tipo.Plantas.Count()!=0)
 		{
-			<p>Nada por mostrar</p>
-			break;
-		}
 			@foreach (var planta in tipo.Plantas)
 			{
-				<a asp-controller="Plantas" asp-action="Detalle">
-				<button type="button" class="btn btn-light" >
+				<a asp-controller="Planta" asp-action="Detalle" asp-route-id="@planta.ID">
+				<button type="submit" class="btn btn-light">
 				<div style="width: 18rem;">
 					<img src="@Url.Content(planta.ImagenURL)" class="card-img-top">
 					<div class="card-body">
@@ -45,5 +42,6 @@
 				</button>
 				</a>
 			}
+		}		
 	}
  </div>

@@ -34,8 +34,11 @@ namespace Vivero.Controllers
             {
                 foreach(var tipo in ListaTipos)
                 {     
-                    if(planta.IDTipoPlanta==tipo.ID)           
-                    tipo.Plantas.Add(planta);
+                    if(planta.IDTipoPlanta==tipo.ID)
+                    {           
+                        planta.TipoPlanta=tipo.Nombre;
+                        tipo.Plantas.Add(planta);
+                    } 
                 }
             }
             return View(ListaTipos);
