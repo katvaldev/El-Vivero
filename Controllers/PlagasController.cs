@@ -95,8 +95,8 @@ namespace Vivero.Controllers
 
         public IActionResult Delete(int? id)
         {
-            var plaga = _context.plaga.Find(id);
-            _context.plaga.Remove(plaga);
+            var plaga = _context.Plagas.Find(id);
+            _context.Plagas.Remove(plaga);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
@@ -110,7 +110,7 @@ namespace Vivero.Controllers
                 return NotFound();
             }
 
-            var plaga = await _context.plaga.FindAsync(id);
+            var plaga = await _context.Plagas.FindAsync(id);
             if (plaga == null)
             {
                 return NotFound();
