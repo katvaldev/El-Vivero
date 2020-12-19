@@ -1,4 +1,4 @@
-@model Vivero.Models.Plaga
+@model IEnumerable<Vivero.Models.Plaga>
 
 @{
     ViewData["Title"] = "Plagas";
@@ -34,3 +34,35 @@ Las plagas y enfermedades se pueden propagar fácilmente a varios países y alca
 </div>
 
 
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre de la Plaga</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Información Adicional</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+
+@foreach (var item in Model)
+{
+    
+    
+
+    <tr>
+      <th scope="row"></th>
+      <td>@Html.DisplayFor(modelItem => item.id)</td>
+      <td>@Html.DisplayFor(modelItem => item.nombreplaga)</td>
+      <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
+      <td>@Html.DisplayFor(modelItem => item.adicional)</td>
+      
+    </tr>
+    
+}    
+
+
+  </tbody>
+</table>
