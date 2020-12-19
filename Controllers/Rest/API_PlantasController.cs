@@ -8,7 +8,7 @@ using Vivero.Models;
 namespace El_Vivero.Controllers.Rest
 {
     [ApiController]
-    [Route("API/Planta")]
+    
     public class API_PlantasController : ControllerBase
     {
         private readonly ILogger<API_PlantasController> _logger;
@@ -22,10 +22,24 @@ namespace El_Vivero.Controllers.Rest
         } 
 
         [HttpGet]
+        [Route("API/Planta")]
         public IEnumerable<Planta> Get()
         {
             var listaPlantas = _context.Planta.OrderBy(x=>x.ID).ToList();
             return listaPlantas.ToArray();
+        }
+        [HttpGet("{id}")]
+        public Planta GetProduct(int? id)
+        {
+            var planta =  _context.Planta.Find(id);
+            return planta;
+        }
+
+        [HttpPost]
+        public Planta CreateProduct(Planta planta){
+            _context.Add(planta);
+            _context.SaveChanges();
+            return planta;
         }
     }
 }
