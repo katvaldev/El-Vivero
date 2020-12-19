@@ -93,6 +93,32 @@ namespace Vivero.Controllers
 
 
 
+        public IActionResult Delete(int? id)
+        {
+            var plaga = _context.plaga.Find(id);
+            _context.plaga.Remove(plaga);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+        public async Task<IActionResult> Detalle(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var plaga = await _context.plaga.FindAsync(id);
+            if (plaga == null)
+            {
+                return NotFound();
+            }
+            return View("Detalle",plaga);
+        }
+
+
 
 
         public IActionResult Formulario()

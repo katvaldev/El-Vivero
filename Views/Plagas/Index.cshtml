@@ -47,13 +47,21 @@ Las plagas y enfermedades se pueden propagar fácilmente a varios países y alca
   </thead>
   <tbody>
 
+  @if (Model.Count() == 0) {
+            <tr>
+                <td colspan="5" class="text-center">No se encontraron registros.</td>
+            </tr>
+    }
+
 @foreach (var item in Model)
 {
-    
-    
 
     <tr>
-      <th scope="row"><a asp-action="Edit" asp-route-id="@item.id">Editar</a> </th>
+      <th scope="row">
+      <a asp-action="Edit" asp-route-id="@item.id">Editar</a> 
+      <a asp-action="Delete" asp-route-id="@item.id">Borrar</a>
+      <a asp-action="Detalle" asp-route-id="@item.id">Detalle</a>
+      </th>
       <td>@Html.DisplayFor(modelItem => item.id)</td>
       <td>@Html.DisplayFor(modelItem => item.nombreplaga)</td>
       <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
