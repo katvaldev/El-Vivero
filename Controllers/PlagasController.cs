@@ -40,7 +40,7 @@ namespace Vivero.Controllers
                 
             }
 
-            return View("PlagasConfirmacion",plaga);
+            return View("PlagasConfirmacion");
         }
 
 
@@ -111,7 +111,7 @@ namespace Vivero.Controllers
                 return NotFound();
             }
 
-            var plaga = await _context.Plagas.FindAsync(id);
+            Plaga plaga = await _context.Plagas.FindAsync(id);
             if (plaga == null)
             {
                 return NotFound();

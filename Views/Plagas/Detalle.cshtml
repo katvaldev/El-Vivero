@@ -1,16 +1,16 @@
-@model IEnumerable<Vivero.Models.Plaga>
+@model Vivero.Models.Plaga
+
 
 @{
     ViewData["Title"] = "Detalle de la Plaga";
 }
 
 
-@foreach (var item in Model)
-{
+
 
 <div class="row" >
 
-<h1 class="card-text col-sm-11 offset-sm-1 " align="left"><FONT COLOR="39A805">@Html.DisplayFor(modelItem => item.nombreplaga)</FONT></h1>
+<h1 class="card-text col-sm-11 offset-sm-1 " align="left"><FONT COLOR="39A805">@Html.DisplayTextFor(model => model.nombreplaga)</FONT></h1>
 
   <div class="col-sm-6 offset-sm-3">
     <div class="card">
@@ -18,18 +18,19 @@
     	<h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5><h5 class="card-title col-sm-12">
     		
     	</h5>
-    		<img src="./plantaA.jpg" class=" col-sm-7 offset-sm-3 btn btn-light shadow p-3 mb-5 bg-white rounded" alt="..." width="100" height="100">
+    		<img src="~/images/logo.png" class=" col-sm-7 offset-sm-3 btn btn-light shadow p-3 mb-5 bg-white rounded" alt="..." width="100" height="100">
       	<div class="card-body">
 
       	<h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5> <h5 class="card-title col-sm-12"></h5>  <h5 class="card-title col-sm-12">
 
         	<h5 class="card-title"><FONT COLOR="39A805">Descripcion de la Plaga</FONT></h5>
-        	<p class="card-text offset-sm-1">@Html.DisplayFor(modelItem => item.descripcion)</p>
+        	<p class="card-text offset-sm-1">@Html.DisplayTextFor(model => model.descripcion)</p>
 
         	<h5 class="card-title "><FONT COLOR="39A805">Informacion Adicional</FONT></h5>
         	<p class="card-text offset-sm-1">
 
-            @Html.DisplayFor(modelItem => item.adicional)
+            
+            @Html.DisplayTextFor(model => model.adicional)
             
             </p>
 
@@ -49,4 +50,3 @@
 </div>
 
 
-}
