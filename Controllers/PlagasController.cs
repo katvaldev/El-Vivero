@@ -50,6 +50,12 @@ namespace Vivero.Controllers
             return View(listplagas);
         }
 
+        public IActionResult Invitado()
+        {
+            var listplagas=_context.Plagas.ToList();
+            return View(listplagas);
+        }
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
