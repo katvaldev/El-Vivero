@@ -126,6 +126,21 @@ namespace Vivero.Controllers
         }
 
 
+        public async Task<IActionResult> DetalleInvitado(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Plaga plaga = await _context.Plagas.FindAsync(id);
+            if (plaga == null)
+            {
+                return NotFound();
+            }
+            return View("DetalleInvitado",plaga);
+        }
+
 
 
         public IActionResult Formulario()
