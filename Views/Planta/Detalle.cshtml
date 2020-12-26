@@ -10,15 +10,28 @@
   </div>
 </div>
   
-
-    <div class="text-center">
-      @* <img src="@Html.DisplayFor(modelItem => item.Imagen)" class="rounded" alt="..."> *@
-      <img src="@Url.Content(Model.ImagenURL)" class="rounded">
-    </div>
-
-
-    <div class="card">
-      <div class="card-body">
-        @Html.DisplayFor(modelItem => Model.Riego)
+<main>
+  <div class="content">
+      <div class="planta-content">  
+        <img src="@Url.Content(Model.ImagenURL)" class="rounded">
+        <a href=#>+</a>
       </div>
-    </div>
+
+      <div class="info">
+        <div class="texto-info">
+          <h4 class="propiedad"><i class="fas fa-temperature-high"></i> Temperatura</h4>
+          @Html.DisplayFor(modelItem => Model.TemperaturaIdeal)
+        </div>
+
+        <div class="texto-info">
+          <h4 class="propiedad"><i class="fas fa-tint"></i> Riego</h4>
+          @Html.DisplayFor(modelItem => Model.Riego)
+        </div>
+
+
+        <div class="texto-info">
+          <h4 class="propiedad"><i class="fas fa-lightbulb"></i> Tips</h4>
+          @Html.DisplayFor(modelItem => Model.Tips)
+        </div>
+      </div>
+</main>
