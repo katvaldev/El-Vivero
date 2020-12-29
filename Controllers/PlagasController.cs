@@ -40,13 +40,20 @@ namespace Vivero.Controllers
                 
             }
 
-            return View("PlagasConfirmacion",plaga);
+            return View("PlagasConfirmacion");
         }
 
 
         public IActionResult Index()
         {
-            return View();
+            var listplagas=_context.Plagas.ToList();
+            return View(listplagas);
+        }
+
+        public IActionResult Invitado()
+        {
+            var listplagas=_context.Plagas.ToList();
+            return View(listplagas);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -92,6 +99,47 @@ namespace Vivero.Controllers
         }
 
 
+
+        public IActionResult Delete(int? id)
+        {
+            var plaga = _context.Plagas.Find(id);
+            _context.Plagas.Remove(plaga);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+        public async Task<IActionResult> Detalle(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Plaga plaga = await _context.Plagas.FindAsync(id);
+            if (plaga == null)
+            {
+                return NotFound();
+            }
+            return View("Detalle",plaga);
+        }
+
+
+        public async Task<IActionResult> DetalleInvitado(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Plaga plaga = await _context.Plagas.FindAsync(id);
+            if (plaga == null)
+            {
+                return NotFound();
+            }
+            return View("DetalleInvitado",plaga);
+        }
 
 
 
