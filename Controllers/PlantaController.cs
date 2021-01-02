@@ -14,7 +14,8 @@ namespace Vivero.Controllers
     {
         private readonly ILogger<PlantaController> _logger;
         private readonly ApplicationDbContext _context; 
-        private List<Planta> _plantas;
+        private IEnumerable<Planta> _plantas;
+        private List<TipoPlanta> ListaTipos;
         
         public PlantaController(ILogger<PlantaController> logger,
             ApplicationDbContext context)
@@ -22,6 +23,7 @@ namespace Vivero.Controllers
             _logger = logger;
             _context = context;
             _plantas = _context.Planta.ToList();
+            CargarPlanta();
         }            
         
         public IActionResult Index(){
@@ -31,13 +33,32 @@ namespace Vivero.Controllers
             return View(model);
         }
 
-        public IActionResult VerPlantas(){
-            var ListaTipo = _context.TipoPlanta.ToList();
-            Planta planta = new Planta();
-            dynamic model = new ExpandoObject();
-            model.planta = planta;
-            model.TipoPlanta = ListaTipo;
-            return View(model);
+        public async Task<IActionResult> VerPlantas(int BuscarPlanta)
+        {
+            var tipo = from m in ListaTipos
+            select m;
+
+            if(BuscarPlanta!=0){
+            tipo = tipo.Where(s => s.ID==BuscarPlanta);
+            }
+            
+            return View(await Task.FromResult(tipo.ToList()));
+        }
+        private void CargarPlanta()
+        {
+            _plantas = _context.Planta.ToList();
+            ListaTipos = _context.TipoPlanta.ToList();
+            foreach(var planta in _plantas)
+            {
+                foreach(var tipo in ListaTipos)
+                {     
+                    if(planta.IDTipoPlanta==tipo.ID)
+                    {           
+                        planta.TipoPlanta=tipo.Nombre;
+                        tipo.Plantas.Add(planta);
+                    } 
+                }
+            }
         }
 
         public IActionResult Detalle(int? ID)
