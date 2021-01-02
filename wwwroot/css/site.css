@@ -62,6 +62,8 @@ a.navbar-brand {
 .planta-content img{
   margin: auto;
   width: 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
   /* max-width: 400px; */
 }
 .planta-content a{
@@ -88,6 +90,12 @@ a.navbar-brand {
 .texto-info{
   text-align: justify;
   padding: 2em;
+}
+.center-cropped {
+  width: 200px;
+  height: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 
@@ -180,10 +188,13 @@ body {
   }
   .planta-content img{
     float: left;
-    width: 100%;
+    width: 500px;
+    height: 500px;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
   .planta-content a{
-    bottom:1em;
+    bottom:4em;
     right:2.5em;
     font-size: 3em;
   }
