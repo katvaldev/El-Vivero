@@ -16,8 +16,6 @@ namespace Vivero.Controllers
         private readonly ApplicationDbContext _context; 
         private IEnumerable<Planta> _plantas;
         private List<TipoPlanta> ListaTipos;
-        private Planta planta;
-        private dynamic model;
 
         
         public PlantaController(ILogger<PlantaController> logger,
@@ -25,22 +23,21 @@ namespace Vivero.Controllers
         {
             _logger = logger;
             _context = context;
-            _plantas = _context.Planta.ToList();
+            // _plantas = _context.Planta.ToList();
             ListaTipos = _context.TipoPlanta.ToList();
-            planta = new Planta();
-            model = new ExpandoObject();
         }            
         
-        public IActionResult Index(){
-            var ListaTipo = _context.TipoPlanta.ToList();
-            // model = new ExpandoObject(); 
-            model.TipoPlanta = ListaTipo;
-            return View(model);
-        }
+        // public IActionResult Index(){
+        //     ListaTipos = _context.TipoPlanta.ToList();
+        //     dynamic model = new ExpandoObject(); 
+        //     model.TipoPlanta = ListaTipos;
+        //     return View(model);
+        // }
 
-        public async Task<IActionResult> VerPlantas(int BuscarPlanta)
+        public async Task<IActionResult> Index(int BuscarPlanta)
         {
-            // dynamic model= new ExpandoObject();
+            _plantas = _context.Planta.ToList();
+            dynamic model= new ExpandoObject();
             model.TipoPlanta = ListaTipos;
 
             var planta = from m in _plantas
@@ -55,6 +52,7 @@ namespace Vivero.Controllers
 
         public IActionResult Detalle(int? ID)
         {
+            _plantas = _context.Planta.ToList();
             if (ID == null)
             {
                 return NotFound();
@@ -71,8 +69,8 @@ namespace Vivero.Controllers
         public IActionResult Formulario()
         {
             var ListaTipo = _context.TipoPlanta.ToList();
-            // planta = new Planta();
-            // model = new ExpandoObject();
+            var planta = new Planta();
+            dynamic model = new ExpandoObject();
             model.planta = planta;
             model.TipoPlanta = ListaTipo;
             return View(model);
@@ -87,7 +85,7 @@ namespace Vivero.Controllers
                 _context.Add(planta);
                 _context.SaveChanges();
                 planta.Respuesta="Planta creada";
-                return RedirectToAction("VerPlantas");
+                return RedirectToAction("Index");
             }
             else{
                 planta.Respuesta="No se pudo añadir";
@@ -119,6 +117,7 @@ namespace Vivero.Controllers
         }
 
         //GET
+        //PRUEBAS CON LOS CACTUS
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -126,19 +125,20 @@ namespace Vivero.Controllers
                 return NotFound();
             }
 
-            planta = await _context.Planta.FindAsync(id);
-            if (planta == null)
+            var _planta = await _context.Planta.FindAsync(id);
+            if (_planta == null)
             {
                 return NotFound();
             }
-            model.planta = planta;
+            dynamic model = new ExpandoObject();
+            model.planta = _planta;
             model.TipoPlanta = ListaTipos;
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,IDTipoPlanta,ImagenURL,Nombre,Precio,Respuesta,Riego,Stock,TemperaturaIdeal")] Planta _planta)
+        public async Task<IActionResult> Edit(int id, [Bind("ID, Nombre, ImagenURL,Precio, Stock,TemperaturaIdeal,Riego,Tips, IDTipoPlanta")] Planta _planta)
         {
             if (id != _planta.ID)
             {
@@ -160,7 +160,8 @@ namespace Vivero.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            // var errors = ModelState.Values.SelectMany(v => v.Errors);
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            dynamic model = new ExpandoObject();
             model.TipoPlanta=ListaTipos;
             model.planta=_planta;
             return View(model);
