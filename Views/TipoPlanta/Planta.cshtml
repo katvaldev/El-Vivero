@@ -11,7 +11,7 @@
 </div>
 
 <div class="dropdown p-3 mb-2 bg-success input-group mb-3">
-	<form asp-controller="Planta" asp-action="VerPlantas">
+	<form asp-controller="TipoPlanta" asp-action="Planta">
 	<select class="custom-select btn btn-outline-light" type="button"  name="BuscarPlanta" onchange="this.form.submit()">
 		<option><i class="fas fa-leaf"></i>Tipo de planta</option>
 		@foreach (TipoPlanta item in Model.TipoPlanta)
