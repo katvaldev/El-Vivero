@@ -5,6 +5,8 @@ using Vivero.Data;
 using Vivero.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Dynamic;
 
 namespace Vivero.Controllers
 {
@@ -12,6 +14,8 @@ namespace Vivero.Controllers
     {
         private readonly ILogger<TipoPlantaController> _logger;
         private readonly ApplicationDbContext _context;
+        private IEnumerable<Planta> _plantas;
+        private List<TipoPlanta> ListaTipos;
 
 
         public TipoPlantaController(ILogger<TipoPlantaController> logger,
@@ -19,6 +23,8 @@ namespace Vivero.Controllers
         {
             _logger = logger;
             _context = context;
+            _plantas = _context.Planta.ToList();
+            ListaTipos = _context.TipoPlanta.ToList();
         }
 
         public IActionResult Index()
@@ -26,22 +32,19 @@ namespace Vivero.Controllers
             var listTipo=_context.TipoPlanta.Where(x => x.Nombre != null).ToList();
             return View(listTipo);
         }
-        public IActionResult Planta()
+        public async Task<IActionResult> PlantaAsync(int BuscarPlanta)
         {
-            var ListaPlantas = _context.Planta.ToList();
-            var ListaTipos = _context.TipoPlanta.ToList();
-            foreach(var planta in ListaPlantas)
-            {
-                foreach(var tipo in ListaTipos)
-                {     
-                    if(planta.IDTipoPlanta==tipo.ID)
-                    {           
-                        planta.TipoPlanta=tipo.Nombre;
-                        tipo.Plantas.Add(planta);
-                    } 
-                }
+            dynamic modelo= new ExpandoObject();
+            modelo.TipoPlanta = ListaTipos;
+
+            var planta = from m in _plantas
+            select m;
+
+            if(BuscarPlanta!=0){
+            _plantas = _plantas.Where(s => s.IDTipoPlanta==BuscarPlanta);
             }
-            return View(ListaTipos);
+            modelo.Planta = _plantas;
+            return View(await Task.FromResult(modelo));
         }
         public IActionResult Create()
         {

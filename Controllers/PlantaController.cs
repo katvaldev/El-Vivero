@@ -16,6 +16,9 @@ namespace Vivero.Controllers
         private readonly ApplicationDbContext _context; 
         private IEnumerable<Planta> _plantas;
         private List<TipoPlanta> ListaTipos;
+        private Planta planta;
+        private dynamic model;
+
         
         public PlantaController(ILogger<PlantaController> logger,
             ApplicationDbContext context)
@@ -23,42 +26,31 @@ namespace Vivero.Controllers
             _logger = logger;
             _context = context;
             _plantas = _context.Planta.ToList();
-            CargarPlanta();
+            ListaTipos = _context.TipoPlanta.ToList();
+            planta = new Planta();
+            model = new ExpandoObject();
         }            
         
         public IActionResult Index(){
             var ListaTipo = _context.TipoPlanta.ToList();
-            dynamic model = new ExpandoObject(); 
+            // model = new ExpandoObject(); 
             model.TipoPlanta = ListaTipo;
             return View(model);
         }
 
         public async Task<IActionResult> VerPlantas(int BuscarPlanta)
         {
-            var tipo = from m in ListaTipos
+            // dynamic model= new ExpandoObject();
+            model.TipoPlanta = ListaTipos;
+
+            var planta = from m in _plantas
             select m;
 
             if(BuscarPlanta!=0){
-            tipo = tipo.Where(s => s.ID==BuscarPlanta);
+            _plantas = _plantas.Where(s => s.IDTipoPlanta==BuscarPlanta);
             }
-            
-            return View(await Task.FromResult(tipo.ToList()));
-        }
-        private void CargarPlanta()
-        {
-            _plantas = _context.Planta.ToList();
-            ListaTipos = _context.TipoPlanta.ToList();
-            foreach(var planta in _plantas)
-            {
-                foreach(var tipo in ListaTipos)
-                {     
-                    if(planta.IDTipoPlanta==tipo.ID)
-                    {           
-                        planta.TipoPlanta=tipo.Nombre;
-                        tipo.Plantas.Add(planta);
-                    } 
-                }
-            }
+            model.Planta = _plantas;
+            return View(await Task.FromResult(model));
         }
 
         public IActionResult Detalle(int? ID)
@@ -79,8 +71,8 @@ namespace Vivero.Controllers
         public IActionResult Formulario()
         {
             var ListaTipo = _context.TipoPlanta.ToList();
-            Planta planta = new Planta();
-            dynamic model = new ExpandoObject();
+            // planta = new Planta();
+            // model = new ExpandoObject();
             model.planta = planta;
             model.TipoPlanta = ListaTipo;
             return View(model);
@@ -134,19 +126,21 @@ namespace Vivero.Controllers
                 return NotFound();
             }
 
-            var planta = await _context.Planta.FindAsync(id);
+            planta = await _context.Planta.FindAsync(id);
             if (planta == null)
             {
                 return NotFound();
             }
-            return View(planta);
+            model.planta = planta;
+            model.TipoPlanta = ListaTipos;
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Nombre,Imagen,Precio,Stock,Temperatura Inicial,Temperatura Final,Riego,Tips,IDTipoPlanta")] Planta planta)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,IDTipoPlanta,ImagenURL,Nombre,Precio,Respuesta,Riego,Stock,TemperaturaIdeal")] Planta _planta)
         {
-            if (id != planta.ID)
+            if (id != _planta.ID)
             {
                 return NotFound();
             }
@@ -155,7 +149,8 @@ namespace Vivero.Controllers
             {
                 try
                 {
-                    _context.Update(planta);
+                    _planta.IDTipoPlanta = int.Parse(Request.Form["IDTipoPlanta"]);
+                    _context.Update(_planta);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -165,7 +160,10 @@ namespace Vivero.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(planta);
+            // var errors = ModelState.Values.SelectMany(v => v.Errors);
+            model.TipoPlanta=ListaTipos;
+            model.planta=_planta;
+            return View(model);
         }
         
         public IActionResult Delete(int? id)

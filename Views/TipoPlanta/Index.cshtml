@@ -30,7 +30,8 @@
         <tr>
             <th scope="row">
                 <a asp-action="Edit" asp-route-id="@item.ID"><i class="fas fa-edit"></i></a> |
-                <a asp-action="Delete" asp-route-id="@item.ID"><i class="fas fa-trash"></i></a>
+                @* <a asp-action="Delete" asp-route-id="@item.ID"><i class="fas fa-trash"></i></a> *@
+                <a href=""><i class="fas fa-trash"></i></a>
             </th>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
