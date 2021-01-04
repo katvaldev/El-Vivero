@@ -52,7 +52,15 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    @* <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button> *@
+                                    if (provider.Name=="Facebook")
+                                    {
+                                        <div class="col-md-4">
+                                            <button class="btn-block btn btn-facebook" type="submit" value="@provider.Name" title="Regístrate con @provider.DisplayName" name="provider">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </button>
+                                        </div>
+                                    }
                                 }
                             </p>
                         </div>
