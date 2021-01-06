@@ -45,15 +45,7 @@ a.navbar-brand {
 .titulo{
   border-bottom:3px solid #39A805;
 }
-/* RRSS */
-.btn-facebook:hover {
-  background: #39A805;
-  color: #fff;
-}
-.btn-facebook {
-  background: #305c99;
-  color: #fff;
-}
+
 /* planta */
 .content{
   width: 100%;
