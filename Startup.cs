@@ -39,13 +39,6 @@ namespace Vivero
                 ));
 
             //  services.AddDbContext<ViveroContext>(x => x.UseSqlServer("Server=.;Database=ViveroDB; Integrated Security=true;"));
-            services.AddAuthentication()
-            .AddFacebook(facebookOptions =>
-            {
-                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-            });
-            
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
