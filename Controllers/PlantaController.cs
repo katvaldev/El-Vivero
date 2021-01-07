@@ -130,20 +130,20 @@ namespace Vivero.Controllers
             {
                 return NotFound();
             }
-            dynamic model = new ExpandoObject();
-            model.planta = _planta;
-            model.TipoPlanta = ListaTipos;
-            return View(model);
+
+            ViewBag.TipoPlanta = ListaTipos;
+
+            return View(_planta);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID, Nombre, ImagenURL,Precio, Stock,TemperaturaIdeal,Riego,Tips, IDTipoPlanta")] Planta _planta)
+        public async Task<IActionResult> Edit(int id, [Bind("Nombre,IDTipoPlanta,ImagenURL,Precio, Riego, TemperaturaIdeal, Tips")] Planta _planta)
         {
-            if (id != _planta.ID)
-            {
-                return NotFound();
-            }
+            // if (id != _planta.ID)
+            // {
+            //     return NotFound();
+            // }
 
             if (ModelState.IsValid)
             {

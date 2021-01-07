@@ -1,8 +1,7 @@
-@model dynamic
+@model Planta
 
 @{
     ViewData["Title"] = "Planta";
-    Planta planta = @Model.planta;
 }
 
 <div class="row">
@@ -10,17 +9,17 @@
         <h1 class="display-4">Editar Planta</h1>
         <form asp-controller="Planta" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="@planta.ID" />
+            <input type="hidden" asp-for="ID" />
             <div class="form-group">
-                <label asp-for="@planta.Nombre" class="control-label"></label>
-                <input asp-for="@planta.Nombre" class="form-control" />
-                <span asp-validation-for="@planta.Nombre" class="text-danger"></span>
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>   
 
             <div class="form-group">
-                <label asp-for="@planta.TipoPlanta" class="control-label"></label>
+                <label asp-for="TipoPlanta" class="control-label"></label>
                 <select name="IDTipoPlanta" class="custom-select">
-                    @foreach (TipoPlanta tipo in Model.TipoPlanta)
+                    @foreach (TipoPlanta tipo in ViewBag.TipoPlanta)
                     {
                         <option value="@tipo.ID">@tipo.Nombre</option>
                     }
@@ -28,33 +27,33 @@
             </div>  
             
             <div class="form-group">
-                <label asp-for="@planta.ImagenURL" class="control-label"></label>
-                <input asp-for="@planta.ImagenURL" class="form-control" />
+                <label asp-for="ImagenURL" class="control-label"></label>
+                <input asp-for="ImagenURL" class="form-control" />
             </div> 
                    
             <div class="form-group">
-                <label asp-for="@planta.Precio" class="control-label"></label>
-                <input asp-for="@planta.Precio" class="form-control" />
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
             </div>               
 
             <div class="form-group">
-                <label asp-for="@planta.Stock" class="control-label"></label>
-                <input asp-for="@planta.Stock" class="form-control"  disabled/>
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control"  readonly/>
             </div>                                   
 
             <div class="form-group">
-                <label asp-for="@planta.TemperaturaIdeal" class="control-label"></label>
-                <input asp-for="@planta.TemperaturaIdeal" class="form-control" />
+                <label asp-for="TemperaturaIdeal" class="control-label"></label>
+                <input asp-for="TemperaturaIdeal" class="form-control" />
             </div>
 
             <div class="form-group">
-                <label asp-for="@planta.Riego" class="control-label"></label>
-                <textarea asp-for="@planta.Riego" class="form-control"></textarea> 
+                <label asp-for="Riego" class="control-label"></label>
+                <textarea asp-for="Riego" class="form-control"></textarea> 
             </div>
 
             <div class="form-group">
-                <label asp-for="@planta.Tips" class="control-label"></label>
-                <textarea asp-for="@planta.Tips" class="form-control"></textarea>
+                <label asp-for="Tips" class="control-label"></label>
+                <textarea asp-for="Tips" class="form-control"></textarea>
             </div>
 
 
