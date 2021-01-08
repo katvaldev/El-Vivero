@@ -174,6 +174,16 @@ namespace Vivero.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+         public IActionResult Habilitar(int? id)
+        {
+            var planta = _context.Planta.Find(id);
+            planta.Deshabilitado = true ? false : true;
+
+            _context.Planta.Update(planta);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
         
     }
 }

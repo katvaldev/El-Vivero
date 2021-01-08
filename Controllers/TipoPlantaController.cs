@@ -104,10 +104,19 @@ namespace Vivero.Controllers
             return View(tipo);
         }
         
-        public IActionResult Delete(int? id)
+        // public IActionResult Delete(int? id)
+        // {
+        //     var tipo = _context.TipoPlanta.Find(id);
+        //     _context.TipoPlanta.Remove(tipo);
+        //     _context.SaveChanges();
+        //     return RedirectToAction(nameof(Index));
+        // }
+        public IActionResult Habilitar(int? id)
         {
             var tipo = _context.TipoPlanta.Find(id);
-            _context.TipoPlanta.Remove(tipo);
+            tipo.Deshabilitado = true ? false : true;
+
+            _context.TipoPlanta.Update(tipo);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }

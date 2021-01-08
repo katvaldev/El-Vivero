@@ -26,6 +26,8 @@
 
 			@foreach (Planta planta in Model.Planta)
 			{
+				@if (planta.Deshabilitado==false)
+				{
 				<a asp-controller="Planta" asp-action="Detalle" asp-route-id="@planta.ID">
 				<button type="submit" class="btn btn-light">
 				<div style="width: 18rem;">
@@ -38,5 +40,6 @@
 				</div>
 				</button>
 				</a>
+				}
 			}
  </div>

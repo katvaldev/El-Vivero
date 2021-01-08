@@ -31,7 +31,14 @@
             <th scope="row">
                 <a asp-action="Edit" asp-route-id="@item.ID"><i class="fas fa-edit"></i></a> |
                 @* <a asp-action="Delete" asp-route-id="@item.ID"><i class="fas fa-trash"></i></a> *@
-                <a href=""><i class="fas fa-trash"></i></a>
+                @if (item.Deshabilitado==false){
+                    <a asp-controller="TipoPlanta" asp-action="Habilitar" asp-route-id="@item.ID" align="center"
+                    class="btn btn-outline-success"><i class="fas fa-eye"></i></a>
+                }
+                else{
+                    <a asp-controller="TipoPlanta" asp-action="Habilitar" asp-route-id="@item.ID" align="center"
+                    class="btn btn-outline-success"><i class="fas fa-eye-slash"></i></a>
+                }
             </th>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)

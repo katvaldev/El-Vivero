@@ -13,6 +13,9 @@ namespace Vivero.Models
         [Column("Tipo")]
         public string Nombre { get; set; }
 
+        [Column("Deshabilitado")]
+        public bool Deshabilitado { get; set; }
+
         // [ForeignKey("IdTipo")]
         public ICollection<Planta> Plantas { get; set; }
 

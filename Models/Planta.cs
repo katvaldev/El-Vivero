@@ -53,8 +53,8 @@ namespace Vivero.Models
         [Column("Tips")]
         public string Tips { get; set; }
 
-        [Column("Activo")]
-        public bool Activo { get; set; }
+        [Column("Deshabilitado")]
+        public bool Deshabilitado { get; set; }
 
 
         [Display(Name="Tipo de planta")]
