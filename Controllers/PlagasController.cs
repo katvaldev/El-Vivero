@@ -147,5 +147,15 @@ namespace Vivero.Controllers
         {
             return View();
         }
+
+        public IActionResult Habilitar(int? id)
+        {
+            var plaga = _context.Plagas.Find(id);
+            plaga.Deshabilitado = true ? false : true;
+
+            _context.Plagas.Update(plaga);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -30,6 +30,10 @@ namespace Vivero.Models
         public string adicional { get; set; }
 
 
+        [Column("Deshabilitado")]
+        public bool Deshabilitado { get; set; }
+        
+
         [NotMapped]
         public string Respuesta { get; set; }
 
