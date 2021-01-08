@@ -138,12 +138,12 @@ namespace Vivero.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nombre,IDTipoPlanta,ImagenURL,Precio, Riego, TemperaturaIdeal, Tips")] Planta _planta)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Nombre,IDTipoPlanta,ImagenURL,Precio, Riego, TemperaturaIdeal, Tips")] Planta _planta)
         {
-            // if (id != _planta.ID)
-            // {
-            //     return NotFound();
-            // }
+            if (id != _planta.ID)
+            {
+                 return NotFound();
+            }
 
             if (ModelState.IsValid)
             {
