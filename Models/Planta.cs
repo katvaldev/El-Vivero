@@ -53,6 +53,9 @@ namespace Vivero.Models
         [Column("Tips")]
         public string Tips { get; set; }
 
+        [Column("Activo")]
+        public bool Activo { get; set; }
+
 
         [Display(Name="Tipo de planta")]
         [ForeignKey("IDTipoPlanta")]
