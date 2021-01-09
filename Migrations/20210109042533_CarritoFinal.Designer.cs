@@ -10,8 +10,8 @@ using Vivero.Data;
 namespace Vivero.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210108222657_Vivero")]
-    partial class Vivero
+    [Migration("20210109042533_CarritoFinal")]
+    partial class CarritoFinal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -297,9 +297,32 @@ namespace Vivero.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<int>("Cantidad")
+                        .HasColumnName("Cantidad")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("Fecha")
                         .HasColumnName("Fecha")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("PlantaID")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Preciounit")
+                        .HasColumnName("PrecioUnit")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Producto")
+                        .HasColumnName("Producto")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnName("Total")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Usuario")
+                        .HasColumnName("Correo")
+                        .HasColumnType("text");
 
                     b.HasKey("ID");
 
@@ -357,7 +380,6 @@ namespace Vivero.Migrations
                         .HasColumnType("text");
 
                     b.Property<decimal>("Precio")
-                        .HasColumnName("Precio")
                         .HasColumnType("numeric");
 
                     b.Property<string>("Riego")

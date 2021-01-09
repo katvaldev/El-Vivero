@@ -30,7 +30,7 @@ namespace Vivero.Models
 
         [Display(Name="Precio")]
         [Required(ErrorMessage = "Por favor, ingrese el precio de la Planta")]
-        [Column("Precio")]
+       
         public decimal Precio { get; set; }
 
 
@@ -62,7 +62,7 @@ namespace Vivero.Models
          public string TipoPlanta { get; set; }
          public int IDTipoPlanta { get; set; }
 
-        [NotMapped]
+         [NotMapped]
          public string Respuesta { get; set; }
 
     }

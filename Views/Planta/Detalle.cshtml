@@ -14,7 +14,7 @@
   <div class="content">
       <div class="planta-content">  
         <img src="@Url.Content(Model.ImagenURL)" class="rounded">
-        <a href="~/Orden">+</a>
+        <a asp-controller="Orden" asp-action="AddItem" asp-route-id="@Model.ID"><i class="fas fa-plus"></i></a>
       </div>
 
       <div class="info">

@@ -11,19 +11,19 @@
 </div>
 
 <div class="dropdown p-3 mb-2 bg-success input-group mb-3">
- <form asp-controller="Planta" asp-action="Index">
-  <select class="custom-select btn btn-outline-light" type="button" name="BuscarPlanta"
-   onchange="this.form.submit()">
-   <option><i class="fas fa-leaf"></i>Tipo de planta</option>
-   @foreach (TipoPlanta item in Model.TipoPlanta)
-	{
-	   	<option class="dropdown-item" value="@item.ID">@item.Nombre</option>
-	}
-  </select>
- </form>
- <div class="input-group-append">
-  <a class="input-group-text btn btn-outline-light" href="~/Planta/Formulario">Agregar</a>
- </div>
+	<form asp-controller="Planta" asp-action="Index">
+	<select class="custom-select btn btn-outline-light" type="button" name="BuscarPlanta"
+	onchange="this.form.submit()">
+	<option><i class="fas fa-leaf"></i>Tipo de planta</option>
+	@foreach (TipoPlanta item in Model.TipoPlanta)
+		{
+			<option class="dropdown-item" value="@item.ID">@item.Nombre</option>
+		}
+	</select>
+	</form>
+	<div class="input-group-append">
+	<a class="input-group-text btn btn-outline-light" href="~/Planta/Formulario">Agregar</a>
+	</div>
 </div>
 
 <div class="container">

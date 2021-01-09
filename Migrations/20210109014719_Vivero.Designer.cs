@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Vivero.Data;
@@ -9,9 +10,10 @@ using Vivero.Data;
 namespace Vivero.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210109014719_Vivero")]
+    partial class Vivero
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -295,32 +297,9 @@ namespace Vivero.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnName("Cantidad")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("Fecha")
                         .HasColumnName("Fecha")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("PlantaID")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("Preciounit")
-                        .HasColumnName("PrecioUnit")
-                        .HasColumnType("numeric");
-
-                    b.Property<string>("Producto")
-                        .HasColumnName("Producto")
-                        .HasColumnType("text");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnName("Total")
-                        .HasColumnType("numeric");
-
-                    b.Property<string>("Usuario")
-                        .HasColumnName("Correo")
-                        .HasColumnType("text");
 
                     b.HasKey("ID");
 

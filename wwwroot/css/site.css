@@ -187,6 +187,7 @@ body {
     display: flex;
   }
   .planta-content img{
+    margin-top: 40px;
     float: left;
     width: 500px;
     height: 500px;
@@ -194,9 +195,10 @@ body {
     background-repeat: no-repeat;
   }
   .planta-content a{
-    bottom:4em;
-    right:2.5em;
-    font-size: 3em;
+    margin: auto;
+    bottom:3em;
+    right:2em;
+    font-size: 2.5em;
   }
 }
 

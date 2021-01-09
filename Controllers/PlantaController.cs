@@ -91,14 +91,7 @@ namespace Vivero.Controllers
                 planta.Respuesta="No se pudo añadir";
                 return View(planta);
             }         
-        }
-
-        public IActionResult Comprar(Planta objPlanta){
-            
-            return View("Comprar", objPlanta);
-
-        }
-        
+        }        
         
         [HttpPost]
         public IActionResult Cargar(Planta objPlanta){
@@ -138,7 +131,7 @@ namespace Vivero.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Nombre,IDTipoPlanta,ImagenURL,Precio, Riego, TemperaturaIdeal, Tips")] Planta _planta)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Nombre,IDTipoPlanta,ImagenURL,Precio,Stock, Riego, TemperaturaIdeal, Tips")] Planta _planta)
         {
             if (id != _planta.ID)
             {
