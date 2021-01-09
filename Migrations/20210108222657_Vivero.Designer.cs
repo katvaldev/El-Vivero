@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Vivero.Data;
@@ -9,9 +10,10 @@ using Vivero.Data;
 namespace Vivero.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210108222657_Vivero")]
+    partial class Vivero
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,6 +262,50 @@ namespace Vivero.Migrations
                     b.ToTable("Contacto");
                 });
 
+            modelBuilder.Entity("Vivero.Models.DetalleOrden", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnName("Cantidad")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("OrdenID")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PlantaID")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("Preciounit")
+                        .HasColumnName("PrecioUnit")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("DetalleOrden");
+                });
+
+            modelBuilder.Entity("Vivero.Models.Orden", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnName("Fecha")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Orden");
+                });
+
             modelBuilder.Entity("Vivero.Models.Plaga", b =>
                 {
                     b.Property<int>("id")
@@ -267,10 +313,6 @@ namespace Vivero.Migrations
                         .HasColumnName("id")
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<bool>("Deshabilitado")
-                        .HasColumnName("Deshabilitado")
-                        .HasColumnType("boolean");
 
                     b.Property<string>("adicional")
                         .HasColumnName("adicional")

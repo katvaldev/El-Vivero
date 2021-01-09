@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Vivero.Migrations
 {
-    public partial class Migracion : Migration
+    public partial class Vivero : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,6 +66,35 @@ namespace Vivero.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DetalleOrden",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    OrdenID = table.Column<int>(nullable: false),
+                    PlantaID = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    PrecioUnit = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DetalleOrden", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orden",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Fecha = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orden", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Plaga",
                 columns: table => new
                 {
@@ -86,7 +115,8 @@ namespace Vivero.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Tipo = table.Column<string>(nullable: true)
+                    Tipo = table.Column<string>(nullable: true),
+                    Deshabilitado = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -212,17 +242,20 @@ namespace Vivero.Migrations
                     TemperaturaIdeal = table.Column<string>(name: "Temperatura Ideal", nullable: true),
                     Riego = table.Column<string>(nullable: true),
                     Tips = table.Column<string>(nullable: true),
-                    IDTipoPlanta = table.Column<int>(nullable: false)
+                    Deshabilitado = table.Column<bool>(nullable: false),
+                    TipoPlanta = table.Column<string>(nullable: true),
+                    IDTipoPlanta = table.Column<int>(nullable: false),
+                    TipoPlantaID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Planta", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Planta_TipoPlanta_IDTipoPlanta",
-                        column: x => x.IDTipoPlanta,
+                        name: "FK_Planta_TipoPlanta_TipoPlantaID",
+                        column: x => x.TipoPlantaID,
                         principalTable: "TipoPlanta",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -263,9 +296,9 @@ namespace Vivero.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Planta_IDTipoPlanta",
+                name: "IX_Planta_TipoPlantaID",
                 table: "Planta",
-                column: "IDTipoPlanta");
+                column: "TipoPlantaID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -287,6 +320,12 @@ namespace Vivero.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contacto");
+
+            migrationBuilder.DropTable(
+                name: "DetalleOrden");
+
+            migrationBuilder.DropTable(
+                name: "Orden");
 
             migrationBuilder.DropTable(
                 name: "Plaga");

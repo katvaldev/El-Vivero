@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Vivero.Controllers
 {
-    public class CarritoController : Controller
+    public class OrdenController : Controller
     {
         public IActionResult Index()
         {

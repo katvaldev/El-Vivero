@@ -28,16 +28,10 @@ namespace Vivero.Models
 
         [Column("adicional")]
         public string adicional { get; set; }
-
-
-        [Column("Deshabilitado")]
-        public bool Deshabilitado { get; set; }
         
 
         [NotMapped]
         public string Respuesta { get; set; }
-
-
 
     }
 }

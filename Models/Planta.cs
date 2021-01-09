@@ -62,7 +62,7 @@ namespace Vivero.Models
          public string TipoPlanta { get; set; }
          public int IDTipoPlanta { get; set; }
 
-         [NotMapped]
+        [NotMapped]
          public string Respuesta { get; set; }
 
     }

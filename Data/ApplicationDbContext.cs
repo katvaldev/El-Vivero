@@ -17,5 +17,7 @@ namespace Vivero.Data
         public DbSet<Vivero.Models.Planta> Planta { get; set; }
         public DbSet<TipoPlanta> TipoPlanta { get; set; }
         public DbSet<Plaga> Plagas { get; set; }
+        public DbSet<Orden> Orden { get; set; }
+        public DbSet<DetalleOrden> DetalleOrden { get; set; }
     }
 }

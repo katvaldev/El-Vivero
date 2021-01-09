@@ -178,7 +178,14 @@ namespace Vivero.Controllers
          public IActionResult Habilitar(int? id)
         {
             var planta = _context.Planta.Find(id);
-            planta.Deshabilitado = true ? false : true;
+            //algo hice mal
+            // planta.Deshabilitado = true ? false : true;
+
+            if(planta.Deshabilitado==true){
+                planta.Deshabilitado=false;
+            }
+            else{
+            planta.Deshabilitado=true;}
 
             _context.Planta.Update(planta);
             _context.SaveChanges();
